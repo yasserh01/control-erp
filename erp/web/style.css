@@ -1,0 +1,35 @@
+:root{--bg:#eef1ee;--card:#fbfcfa;--ink:#243238;--mut:#6b7b80;--line:#d9e0dc;--acc:#2f6f73;--acc2:#e4efee;--ok:#2e7d5b;--warn:#b7791f;--bad:#b4443c}
+:root[data-theme=dark]{--bg:#171e21;--card:#202a2e;--ink:#e2e9e8;--mut:#92a3a6;--line:#31403f;--acc:#6fb3b0;--acc2:#27393a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 24px;background:var(--card);border-bottom:1px solid var(--line)}
+header h1{font-size:1.15em;margin:0;cursor:pointer}.crumb{color:var(--mut);font-size:.9em}.sp{flex:1}.who{color:var(--mut);font-size:.88em}
+button,select,input,textarea{font:inherit;color:var(--ink)}
+input,select,textarea{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-width:0}
+.btn{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}.btn:hover{background:var(--acc2)}
+.pri{background:var(--acc);color:#fff;border-color:var(--acc)}.pri:hover{background:var(--acc);filter:brightness(1.08)}.dng{color:var(--bad)}
+main{padding:24px;max-width:1400px;margin:auto}h2{margin:.2em 0}.sub{color:var(--mut);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 16px;text-align:center;cursor:pointer;border-top:5px solid var(--c,var(--acc));transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(30,50,50,.12)}.tile .ic{font-size:2.3em}.tile b{display:block;margin-top:6px}.tile small{color:var(--mut)}
+.tile.soon{opacity:.55;cursor:default}.tile.soon:hover{transform:none;box-shadow:none}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0;padding:12px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mut);font-weight:600;font-size:.88em}tr.click:hover td{background:var(--acc2);cursor:pointer}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tfoot td{font-weight:700;border-top:2px solid var(--ink)}
+.pill{padding:2px 10px;border-radius:99px;font-size:.82em;background:var(--acc2)}.Posted{color:var(--ok)}.Draft{color:var(--warn)}.Reversed{color:var(--bad)}
+.empty{text-align:center;color:var(--mut);padding:40px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);width:min(900px,95vw);padding:22px}dialog::backdrop{background:rgba(20,30,30,.45)}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.88em;color:var(--mut)}label input,label select{color:var(--ink);font-size:1em}
+.ft{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.lines input,.lines select{width:100%}.lines td{padding:4px}
+.tree .el{margin:14px 0 6px;font-weight:700;color:var(--acc)}.tree .gr{display:flex;gap:8px;align-items:center;margin:8px 0 2px 12px;font-weight:600}
+.tree .lg{display:flex;gap:10px;margin-left:34px;padding:3px 6px;border-radius:6px;cursor:pointer}.tree .lg:hover{background:var(--acc2)}.tree code{color:var(--mut)}
+.tag{font-size:.75em;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--mut)}
+.auth{max-width:440px;margin:8vh auto}.auth h2{margin-bottom:6px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 18px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:99}
+#toast.on{opacity:1}#toast.err{background:var(--bad);color:#fff}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+@media print{header,.bar,.btn{display:none!important}body{background:#fff}.panel{border:0}}

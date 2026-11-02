@@ -1,0 +1,199 @@
+### iss
+RULES.iss=r=>{const Ls=r.Lines||[];if(!Ls.some(l=>l.item&&N(l.q)>0))return[];if(!r.Store)return{err:'Select the store.'};const B=stk().B,need={};Ls.forEach(l=>{if(l.item&&N(l.q)>0)need[l.item]=(need[l.item]||0)+N(l.q)});
+for(const it of Object.keys(need)){const b=B.find(x=>x.s==r.Store&&x.i==it),have=b?b.q:0;if(need[it]>have+1e-6)return{err:'Item '+it+': only '+(+have.toFixed(3))+' in '+r.Store+', but '+(+need[it].toFixed(3))+' is being issued.'}}
+const C=issCosts(r),E=[],NL=[];let tot=0;for(let i=0;i<Ls.length;i++){const l=Ls[i];if(!l.item||!(N(l.q)>0)){NL.push(l);continue}const n='Line '+(i+1)+': ';if(!l.acct)return{err:n+'select the GL account.'};
+if(anType(l.acct)=='Project'){if(!l.prj)return{err:n+'select the project for the project cost-control account “'+l.acct+'”.'};if(prActs(l.prj).length&&!l.act)return{err:n+'select the activity of project '+l.prj+'.'}}
+const c=+N(C[l.lid]).toFixed(2);if(!(c>0))return{err:n+'no stock cost found for '+l.item+' in '+r.Store+'.'};E.push([l.acct,c,0,{Project:l.prj||'',Activity:l.act||'',El:l.prj?celOf(l.prj,l.act,'Materials'):''}]);E.push([invAcct(l.item),0,c]);tot+=c;NL.push({...l,cost:c})}
+E.meta={Amount:+tot.toFixed(2),Total:+tot.toFixed(2),Lines:NL};return E}
+
+### cons
+RULES.cons=r=>{const c=consCost(r);return c>0?[['Project Cost / COGS',c,0],[invAcct(r.Item),0,c]]:{err:'No stock cost found. Check the store, item and quantity, and that the stock is available.'}}
+
+### loan
+RULES.loan=r=>[['Employee Loans',A(r),0],['Bank / Cash',0,A(r)]]
+
+### padj
+RULES.padj=r=>{const e=emp(r.Employee);if(!e)return{err:'Select an employee.'};const p=r.Type,dr=e[p+' Prov Debit Acct'],cr=e[p+' Prov Credit Acct'];if(!dr||!cr)return{err:'Set the '+p+' provision accounts on the employee master first.'};const a=A(r);return r.Direction=='Decrease'?[[cr,a,0],[dr,0,a]]:[[dr,a,0],[cr,0,a]]}
+
+### grn
+RULES.grn=r=>{const L=r.Lines||[];if(!L.length)return oldR.grn(r);const E=[];let t=0;for(let i=0;i<L.length;i++){if((L[i].t||'Inventory')=='Inventory'&&L[i].item&&!(L[i].st||r.Store))return{err:'Line '+(i+1)+': select the store.'};const a=LAc(L[i],0,r);if(!a)return{err:laErr(L[i],i)};const m=lamt(L[i],r);E.push([a,m,0,dmo(L[i],r)]);t+=m}E.push(['GRN Payable',0,+t.toFixed(2)]);return E}
+
+### sret
+RULES.sret=r=>{const L=r.Lines||[];if(!L.length)return oldR.sret(r);const E=[];let b=0,v=0;for(let i=0;i<L.length;i++){const a=LAc(L[i],0,r);if(!a)return{err:laErr(L[i],i)};const m=lamt(L[i],r);E.push([a,0,m,dmo(L[i],r)]);b+=m;v+=lvat(L[i],r)}
+const g=rows('grn').find(x=>x.No==r['GRN No']&&x.Posted&&!x.Reversed),p1=+Math.min(b,Math.max(g?grnOpen(g,r.id):0,0)).toFixed(2),p2=+(b-p1).toFixed(2),v2=b?+(v*p2/b).toFixed(2):0;
+if(p1)E.push(['GRN Payable',p1,0]);if(p2+v2>0)E.push(['Accounts Payable',+(p2+v2).toFixed(2),0]);if(v2)E.push(['Input VAT',0,v2]);E.meta={GrnPart:p1};return E}
+
+### pv
+RULES.pv=w(RULES.pv,'sinv','Supplier Advances','Accounts Payable')
+
+### pcn
+RULES.pcn=r=>{const L=r.Lines||[];if(!L.length)return{err:'Add at least one line.'};const E=[];let b=0,v=0;for(let i=0;i<L.length;i++){const a=LAc(L[i],0,r);if(!a)return{err:laErr(L[i],i)};const m=lamt(L[i],r);E.push([a,0,m,dmo(L[i],r)]);b+=m;v+=lvat(L[i],r)}if(v)E.push(['Input VAT',0,+v.toFixed(2)]);E.push(['Accounts Payable',+(b+v).toFixed(2),0]);return r.Type=='Debit'?flip(E):E}
+
+### cn
+RULES.cn=r=>{const L=r.Lines||[];if(!L.length)return oldCn(r);const deb=r.Type=='Debit',E=[],ret=/^Goods returned/.test(r.Reason||'');let net=0,vt=0,inv=null;
+if(!deb){inv=rows('sinvc').find(x=>x.No==r['Invoice No']&&pst(x));if(!inv)return{err:'Select the posted tax invoice this credit note refers to (Invoice No).'};if(inv.Customer!=r.Customer)return{err:'Invoice '+inv.No+' belongs to '+inv.Customer+', not '+r.Customer+'.'}}
+for(let i=0;i<L.length;i++){const l=L[i],t=l.t||'Inventory',n='Line '+(i+1)+': ';if(!(N(l.q)>0))continue;const m=lamt(l,r),v=lvat(l,r);
+if(t=='Asset')return{err:n+'an asset sale is corrected by reversing the GDN, not by a credit or debit note.'};
+if(!deb){const il=l.src&&l.src.id==inv.id&&(inv.Lines||[]).find(x=>x.lid==l.src.lid);if(!il)return{err:n+'the line must come from invoice '+inv.No+'.'};const e=crChk(l,r,il,inv,n);if(e)return{err:e}}
+let a='';if(ret)a='Sales Returns';else if(t=='GL Account'){a=l.acct;if(!a)return{err:n+'select the GL account.'}}
+else{const it=itemOf(l.item);if(!it.id)return{err:n+'select the item or service from the Item Master.'};a=it['Revenue Account']||'';if(!a&&t=='Service'&&(l.prj||r.Project))a=projOf(l.prj||r.Project)['Revenue Account']||'';if(!a)return{err:n+'Item Master > '+(it.Name||l.item)+' > Revenue Account is not set.'}}
+E.push([a,deb?0:m,deb?m:0,dmo(l,r)]);net+=m;vt+=v}
+if(!(net>0))return{err:'Add at least one line with a quantity and price.'};
+if(vt)E.push(['Output VAT',deb?0:+vt.toFixed(2),deb?+vt.toFixed(2):0]);E.push(['Accounts Receivable',deb?+(net+vt).toFixed(2):0,deb?0:+(net+vt).toFixed(2)]);
+if(!deb&&net+vt>outst('sinvc',inv)+0.005)return{err:'The credit ('+f2(net+vt)+') is more than the outstanding balance of invoice '+inv.No+' ('+f2(outst('sinvc',inv))+'). Reverse or refund the receipt first.'};
+return E}
+
+### sr
+RULES.sr=r=>{const L=r.Lines||[];if(!L.length)return{err:'Add at least one line.'};const E=[],meta={RU:{},RI:{},RC:{}};let crN=0,crV=0,inv0=null;
+for(let i=0;i<L.length;i++){const l=L[i],n='Line '+(i+1)+': ',q=N(l.q);if(!(q>0))continue;
+if((l.t||'Inventory')!='Inventory')return{err:n+'only stock items can be returned. Use a credit note for services.'};
+if(!l.src||!l.item)return{err:n+'the line must come from the GDN or invoice. Create the return from the document.'};
+const sd=rows(l.src.k).find(x=>x.id==l.src.id),sl=sd&&(sd.Lines||[]).find(x=>x.lid==l.src.lid);if(!sd||!sl||!pst(sd))return{err:n+'the original document is not posted.'};
+if(sd.Customer!=r.Customer)return{err:n+sd.No+' belongs to '+sd.Customer+', not '+r.Customer+'.'};
+const it=itemOf(l.item),st=l.st||r.Store;if(!it.id)return{err:n+l.item+' was not found in the Item Master.'};if(!st)return{err:n+'select the store the goods come back to.'};
+const ia2=it['Inventory Account'],ca=it['Cost of Sales Account'];if(!ia2)return{err:n+'Item Master > '+(it.Name||l.item)+' > Inventory Account is not set.'};if(!ca)return{err:n+'Item Master > '+(it.Name||l.item)+' > Cost of Sales Account is not set.'};
+const other=convDone('sr',l.src.lid,r.id,1);if(q>N(sl.q)-other+1e-6)return{err:n+'the quantity ('+q+') is more than what is left to return on '+sd.No+' ('+(+(N(sl.q)-other).toFixed(3))+').'};
+const lc=(sd.LCost||{})[sl.lid];if(lc===undefined)return{err:n+'the original cost of '+(it.Name||l.item)+' was not found on '+sd.No+'.'};
+const cu=N(sl.q)?lc/N(sl.q):0,dm=dmo(l,r),c=+(q*cu).toFixed(2);let gu,ru,ri;
+if(l.src.k=='dn'){gu=dnUnit(sd,sl);const unb=N(sl.q)-convDone('sinvc',sl.lid,'',1)-ruQty(sl.lid,r.id);ru=Math.max(0,Math.min(q,unb));ri=+(q-ru).toFixed(4)}
+else{if(sl.src&&sl.src.k=='dn')return{err:n+'this invoice line came from a GDN. Return the goods against the GDN.'};gu=N(sl.q)?lamt(sl,sd)/N(sl.q):0;ru=0;ri=q}
+E.push(['Sales Returns',+(q*gu).toFixed(2),0,dm]);if(ru>0)E.push(['GDN Receivable',0,+(ru*gu).toFixed(2),dm]);
+if(ri>0.0001){let inv,il;if(l.src.k=='dn'){inv=rows('sinvc').find(x=>x.No==r['Invoice No']&&pst(x));if(!inv)return{err:n+(+ri.toFixed(3))+' unit(s) of this line were already invoiced. Select the invoice (Invoice No) so the receivable can be credited.'};if(inv.Customer!=r.Customer)return{err:'Invoice '+inv.No+' belongs to '+inv.Customer+', not '+r.Customer+'.'};il=(inv.Lines||[]).find(x=>x.src&&x.src.lid==sl.lid);if(!il)return{err:n+'invoice '+inv.No+' does not contain this delivered line.'}}else{inv=sd;il=sl}
+if(inv0&&inv0.id!=inv.id)return{err:'A sales return can credit only one invoice. Create a separate return for '+inv.No+'.'};inv0=inv;
+const iu=N(il.q)?lamt(il,inv)/N(il.q):0;if(ri>N(il.q)-invCrQ(il.lid,r.id)+1e-6)return{err:n+'more than the quantity invoiced on '+inv.No+' ('+(+(N(il.q)-invCrQ(il.lid,r.id)).toFixed(3))+' left to return).'};
+const i2=+(ri*iu).toFixed(2),v2=+(i2*N(il.v)/100).toFixed(2),left=crLeft(il,inv,r.id);if(i2>left+0.005)return{err:n+'the credit ('+f2(i2)+') is more than what is left to credit on invoice '+inv.No+' ('+f2(Math.max(0,left))+').'};
+E.push(['Accounts Receivable',0,+(i2+v2).toFixed(2)]);if(v2)E.push(['Output VAT',v2,0]);const gi=+(ri*gu).toFixed(2),df=+(i2-gi).toFixed(2);if(Math.abs(df)>0.004)E.push(['Sales Price Adjustment',df>0?df:0,df<0?-df:0]);
+crN+=i2;crV+=v2;meta.RI[l.lid]={il:il.lid,inv:inv.id,q:ri,net:i2}}
+if(c){E.push([ia2,c,0,dm]);E.push([ca,0,c,dm])}meta.RU[l.lid]=+ru.toFixed(4);meta.RC[l.lid]=c}
+if(!E.length)return{err:'Enter the quantity to return.'};
+if(inv0&&crN+crV>outst('sinvc',inv0)+0.005)return{err:'The credit to the receivable ('+f2(crN+crV)+') is more than the outstanding balance of invoice '+inv0.No+' ('+f2(outst('sinvc',inv0))+'). Reverse or refund the receipt first.'};
+meta.CrNet=+crN.toFixed(2);meta.CrVat=+crV.toFixed(2);meta.CrAR=+(crN+crV).toFixed(2);if(inv0)meta['Invoice No']=inv0.No;E.meta=meta;return E}
+
+### pcert
+RULES.pcert=r=>{const pn=r.Project;if(!apcOut(pn))return{err:'Project '+pn+' does not recognise revenue on approved progress certificates (Project Master > Measurement Method), so this certificate posts no entry. Its revenue comes from the Revenue Recognition run, and the progress invoice credits Unbilled Receivables.'};
+const ua=pAcc(pn,'Unbilled Receivable Account','Unbilled Receivables'),ra=pAcc(pn,'Revenue Account','Contract Revenue');if(!ua)return{err:pAccErr(pn,'Unbilled Receivable Account','Unbilled Receivables')};if(!ra)return{err:pAccErr(pn,'Revenue Account','Contract Revenue')};
+const E=[];(r.Lines||[]).forEach(l=>{const m=+lamt(l,r).toFixed(2);if(!(m>0))return;E.push([ua,m,0,{Project:pn,Activity:l.act||''}]);E.push([ra,0,m,{Project:pn,Activity:l.act||''}])});
+if(!E.length)return{err:'The certificate has no value.'};return E}
+
+### dn
+RULES.dn=r=>{const bad=[r.Project].concat((r.Lines||[]).map(l=>l.prj)).find(p=>isOT(p));if(bad)return{err:'Project '+bad+' is a contract works (over time) project. Bill it with a progress certificate, not a GDN.'};return dn1(r)}
+
+### bdw
+RULES.bdw=r=>{const e=bdwChk(r);if(e)return{err:e};const inv=rows('sinvc').find(x=>x.No==r['Invoice No']&&pst(x)),b=+(N(r.Amount)*(+inv.Rate||1)).toFixed(2),E=[['Credit Loss Allowance',b,0],['Accounts Receivable',0,b]];E.meta={Base:b,ApprovedBy:secOn()&&cu?cu.u:curRole(),ApprovedAt:new Date().toLocaleString()};return E}
+
+### rc
+RULES.rc=r=>{if((r['Payment Type']||'')!='Bad Debt Recovery')return rc1(r);const b=A(r);if(!(b>0))return{err:'The amount must be above 0.'};const w=bdwRows(r.Customer,r.id).find(x=>x.no==r['Write-off No']);if(!w)return{err:'The written-off invoice '+(r['Write-off No']||'')+' was not found or has nothing left to recover.'};if(b>w.rem+0.005)return{err:'The amount is more than what is left to recover on '+w.no+' ('+f2(w.rem)+').'};
+const src=r.PDC?'PDC Receivable':srcA(r);return[[src,b,0],['Credit Loss Allowance',0,b]]}
+
+### jv
+RULES.jv=(f=>r=>{if(!Array.isArray(r.JL))return f(r);const L=r.JL;if(!L.length)return{err:'The voucher has no lines.'};const out=[];let dr=0,cr=0;
+for(let i=0;i<L.length;i++){const l=L[i],e=jvLineErr(l,i);if(e)return{err:e};const am=+N(l.amt).toFixed(2),D=l.dc=='Dr',k=jvKind(l.a);dr+=D?am:0;cr+=D?0:am;
+out.push([l.a,D?am:0,D?0:am,{Project:l.prj||'','Cost Centre':l.cc||'',Sup:k=='sup'?l.pty:'',Cus:k=='cus'?l.pty:'',Ast:k=='ast'?l.pty:'',Nar:l.d||r.Narration||''}])}
+{const V=dtJvVat(r);if(V.err)return{err:V.err};V.L.forEach(v=>{dr+=v.dc=='Dr'?v.amt:0;cr+=v.dc=='Cr'?v.amt:0;out.push([v.key,v.dc=='Dr'?v.amt:0,v.dc=='Cr'?v.amt:0,{Project:v.prj,'Cost Centre':v.cc,Nar:v.nar}])})}if(!(dr>0))return{err:'The voucher has no amount.'};
+if(Math.abs(dr-cr)>0.005)return{err:'The voucher does not balance: debit '+f2(dr)+', credit '+f2(cr)+' (difference '+f2(Math.abs(dr-cr))+').'};return out})(RULES.jv)
+
+### petty
+RULES.petty=r=>{const P=r.PL;if(!Array.isArray(P))return{err:'This is an old-format petty cash record. Select Edit, check the lines, save it, and then post.'};
+const h=ptHolder(r.Holder);if(!h)return{err:'Select the petty cash holder.'};const ca=h['Cash Account'];if(!ca||!coaRow(ca))return{err:'The holder “'+h['Holder Name']+'” has no cash account. Link the holder to an account under Cash on Hand in Master Data › Petty Cash Holders.'};
+if(!P.length)return{err:'The voucher has no lines.'};const inc=r['Tax Basis']=='Incl',M={},ord=[];let net=0,tax=0;
+for(let i=0;i<P.length;i++){const l=P[i],e=ptLineErr(l,i,ca);if(e)return{err:e};const c=l.net!=null?{net:N(l.net),tax:N(l.tax)}:ptCalc(l,inc),dm=ptDm(l),q=[l.a,dm.Project,dm.Activity,dm.El,dm.Sup,dm.Cus,dm.Ast].join('\u0001');
+if(!M[q]){M[q]=[l.a,0,0,{...dm,Nar:ptNar(r)}];ord.push(q)}M[q][1]=+(M[q][1]+c.net).toFixed(2);net+=c.net;tax+=c.tax}
+net=+net.toFixed(2);tax=+tax.toFixed(2);if(!(net>0))return{err:'The voucher has no amount.'};const out=ord.map(q=>M[q]);
+if(tax>0)out.push(['Input VAT',tax,0,{Nar:'Input VAT — '+ptNar(r)}]);out.push([ca,0,+(net+tax).toFixed(2),{Nar:ptNar(r)}]);return out}
+
+### gpv
+RULES.gpv=r=>gvRule('gpv',r)
+
+### grv
+RULES.grv=r=>gvRule('grv',r)
+
+### ctj
+RULES.ctj=r=>{const L=(r.Lines||[]).filter(l=>N(l.dr)||N(l.cr));if(!L.length)return{err:'The entry has no lines.'};const miss=L.filter(l=>!rows('coa').some(a=>a.Name==l.a&&a.Level=='Ledger'));if(miss.length)return{err:'Account not found in the chart of accounts: '+miss.map(l=>l.a).join(', ')+'.'};return L.map(l=>[l.a,N(l.dr),N(l.cr)])}
+
+### bt
+RULES.bt=r=>bxRule(r)
+
+### accr
+RULES.accr=r=>r.ACV?acRule(r):ac_rule0(r)
+
+### prov
+RULES.prov=r=>r.PV?pvRule(r):{err:'This earlier entry has no accounting entry. Enter a new provision.'}
+
+### acq
+RULES.acq=r=>{if(!r.Costs)return[[r['Asset Code']?astAcct(r['Asset Code']):'Fixed Assets',A(r),0],['Input VAT',V(r),0],['Accounts Payable',0,A(r)+V(r)]];
+const ca=faCapAcct(r),E=[],add=(a,x,dm)=>{x=faR(x);if(!x)return;const k=a+'|'+((dm&&dm.Sup)||'');const e=E.find(y=>y.k==k);if(e){e.n=faR(e.n+x)}else E.push({k,a,n:x,dm:dm||{}})};
+for(const c of r.Costs){if(c.cr=='IN')continue;const n=faCAmt(c),v=faCVat(c),nr=c.rec=='Non-recoverable'?v:0;add(ca,n+nr,{});if(v-nr)add('Input VAT',v-nr,{});
+const tot=n+v;
+if(c.cr=='AP'){const sp=c.sup||r.Supplier;if(!sp)return{err:'Select the supplier for the cost “'+(c.d||c.type)+'”.'};add('Accounts Payable',-tot,{Sup:sp})}
+else if(c.cr=='CLR'){const ac=c.acct||FAS().clr;if(!ac)return{err:'Choose the asset clearing account in Asset Settings, or select the account on the cost “'+(c.d||c.type)+'”.'};add(ac,-tot,{})}
+else{if(!c.acct)return{err:'Select the account to credit for the cost “'+(c.d||c.type)+'”.'};add(c.acct,-tot,{})}}
+const out=[];E.forEach(e=>{if(e.n>0)out.push([e.a,e.n,0,e.dm]);else if(e.n<0)out.push([e.a,0,-e.n,e.dm])});return out}
+
+### disp
+RULES.disp=r=>{const c=faDispCalc(r);if(c.err)return{err:c.err};const a=c.a,E=[],ty=rows('asstype').find(x=>x.Name==a.Type)||{},adA=a['Accum Dep Account']||ty['Accum Dep Account']||'Accumulated Depreciation',deA=a['Dep Expense Account']||ty['Dep Expense Account']||'Depreciation Expense',D={Project:c.dims.prj||'','Cost Centre':c.dims.cc||''};
+{const g={};c.dp.add.forEach(m=>faAlloc(m.amt,m.split&&m.split.length?m.split:[{prj:c.dims.prj,cc:c.dims.cc,fr:1}]).forEach(s=>{if(!s.amt)return;const q=(m.ex||deA)+'\u0001'+(m.ac||adA)+'\u0001'+(s.prj||'')+'\u0001'+(s.cc||'');g[q]=(g[q]||0)+s.amt}));
+Object.keys(g).forEach(q=>{const[x,y,pj,cc]=q.split('\u0001'),v=faR(g[q]),dm={Project:pj,'Cost Centre':cc,Ast:a.Code};E.push([x,v,0,dm]);E.push([y,0,v,dm])})}
+if(c.acc)E.push([adA,c.acc,0,{...D,Ast:a.Code}]);
+const rc=r['Receive In']||'Bank';
+if(c.gross){if(rc=='Customer'){const cu0=r.Customer||r.Buyer;if(!cu0)return{err:'Select the customer who owes the proceeds.'};E.push(['Accounts Receivable',c.gross,0,{...D,Cus:cu0}])}
+else if(rc=='Supplier'){if(!r.Supplier)return{err:'Select the supplier who gives the trade-in allowance.'};E.push(['Accounts Payable',c.gross,0,{...D,Sup:r.Supplier}])}
+else if(rc=='Other'){if(!r['Receive Account'])return{err:'Select the account that receives the proceeds.'};E.push([r['Receive Account'],c.gross,0,D])}
+else E.push([r['Receive Account']||'Bank / Cash',c.gross,0,D])}
+if(c.rm)E.push([r['Removal Account']||'Bank / Cash',0,c.rm,D]);
+E.push([astAcct(a.Code),0,c.cost,{...D,Ast:a.Code}]);
+if(c.gl)E.push(['Disposal Gain/Loss',c.gl<0?-c.gl:0,c.gl>0?c.gl:0,D]);
+if(c.vat)E.push(['Output VAT',0,c.vat,D]);
+E.meta={Cost:c.cost,'Acc Dep':c.acc,NBV:c.nbv,'Gain Loss':c.gl,'Catch-up':faR(c.dp.addT||0),Net:c.net,'VAT Amt':c.vat,Amount:c.net,Total:c.gross,'VAT Treat':c.tr,'VAT %':c.rate};E.dp=c.dp.add;return E}
+
+### rec
+RULES.rec=r=>{if(!r.IV)return[];const L=(r.Lines||[]).filter(l=>l.item&&N(l.q)>0),E=[];let tot=0;
+L.forEach(l=>{const v=ivR(N(l.q)*N(l.p));if(v>0){E.push([invAcct(l.item),v,0]);tot+=v}});tot=ivR(tot);if(!(tot>0))return[];
+const cr=r['Credit Account'];if(!cr)return{err:'Select the account to credit.'};E.push([cr,0,tot,ivDm(r)]);E.meta={Total:tot,Amount:tot};return E}
+
+### adj
+RULES.adj=r=>{if(!r.IV)return[];const L=(r.Lines||[]).filter(l=>l.item&&N(l.q)>0);if(!L.length)return[];const o=r.Status;
+if(IVS().neg=='Block'){const ng=ivNegAfter(on=>{r.Status=on?'Posted':o});if(ng.length)return{err:'The stock would become negative: '+ivNegTxt(ng)+'.'}}
+const C=ivCosts(r),E=[],NL=[];let ls=0,gn=0;
+for(const l of L){const v=ivR(Math.abs(N(C[l.lid])));NL.push({...l,cost:v});if(!(v>0))continue;const it=itemOf(l.item);
+if(l.dir=='Increase'){const a=ivReasonAcc(l.rsn)||ivAcc('gain',it);if(!a)return{err:'No gain account is set for '+l.item+'.'};E.push([invAcct(l.item),v,0]);E.push([a,0,v,ivDm(r)]);gn+=v}
+else{const a=ivReasonAcc(l.rsn)||ivAcc('loss',it);if(!a)return{err:'No loss account is set for '+l.item+'.'};E.push([a,v,0,ivDm(r)]);E.push([invAcct(l.item),0,v]);ls+=v}}
+const A2=ivAggE(E);A2.meta={Lines:NL,Loss:ivR(ls),Gain:ivR(gn),Total:ivR(ls+gn),Amount:ivR(ls+gn)};return A2}
+
+### cnt
+RULES.cnt=r=>{if(!r.IV)return[];const L=(r.Lines||[]).filter(l=>l.item&&ivCntVar(l)!==0);if(!L.length)return[];const o=r.Status;
+if(IVS().neg=='Block'){const ng=ivNegAfter(on=>{r.Status=on?'Posted':o});if(ng.length)return{err:'The stock would become negative: '+ivNegTxt(ng)+'.'}}
+const C=ivCosts(r),E=[],NL=[];let ls=0,gn=0;
+(r.Lines||[]).forEach(l=>{NL.push({...l})});
+for(const l of L){const v=ivR(Math.abs(N(C[l.lid]))),up=ivCntVar(l)>0,it=itemOf(l.item);const x=NL.find(q=>q.lid==l.lid);if(x)x.vcost=v;if(!(v>0))continue;
+if(up){const a=ivReasonAcc(l.rsn)||ivAcc('gain',it);if(!a)return{err:'No gain account is set for '+l.item+'.'};E.push([invAcct(l.item),v,0]);E.push([a,0,v,ivDm(r)]);gn+=v}
+else{const a=ivReasonAcc(l.rsn)||ivAcc('loss',it);if(!a)return{err:'No loss account is set for '+l.item+'.'};E.push([a,v,0,ivDm(r)]);E.push([invAcct(l.item),0,v]);ls+=v}}
+const A2=ivAggE(E);A2.meta={Lines:NL,Gain:ivR(gn),Loss:ivR(ls),'Net Variance':ivR(gn-ls),Total:ivR(gn+ls),Amount:ivR(gn+ls)};return A2}
+
+### nrv
+RULES.nrv=r=>{if(!r.IV)return[];const pm=ivProvMap(),E=[],NL=[];let net=0,tot=0;
+for(const l of (r.Lines||[])){if(!l.item)continue;const key=(l.store||'')+'|'+l.item,prev=ivR(pm[key]||0),req=ivR(l.req),mv=ivR(req-prev);NL.push({...l,prev,mv});if(Math.abs(mv)<0.005)continue;
+const it=itemOf(l.item),wd=ivAcc('wdx',it),pv=ivAcc('prov',it);if(!wd)return{err:'No write-down expense account is set for '+l.item+'.'};if(!pv)return{err:'No provision account is set for '+l.item+'.'};
+if(mv>0){E.push([wd,mv,0,ivDm(r)]);E.push([pv,0,mv])}else{E.push([pv,-mv,0]);E.push([wd,0,-mv,ivDm(r)])}net+=mv;tot+=Math.abs(mv)}
+if(!E.length)return{err:'Nothing to post: the provision already agrees with this assessment. Cancel the document.'};
+const A2=ivAggE(E);A2.meta={Lines:NL,'Net Movement':ivR(net),Total:ivR(tot),Amount:ivR(tot)};return A2}
+
+### ipc
+RULES.ipc=r=>{const pn=r.Project;if(!cwOut(pn))return{err:'Project '+pn+' does not recognise revenue on certified quantities (Project Master > Measurement Method).'};
+const ua=pAcc(pn,'Unbilled Receivable Account','Unbilled Receivables'),ra=pAcc(pn,'Revenue Account','Contract Revenue');if(!ua)return{err:pAccErr(pn,'Unbilled Receivable Account','Unbilled Receivables')};if(!ra)return{err:pAccErr(pn,'Revenue Account','Contract Revenue')};
+const E=[];let W=0;(r.Lines||[]).forEach(l=>{const m=cwIpcVal(l);if(!(m>0))return;W+=m;E.push([ua,m,0,{Project:pn,Activity:l.act||''}]);E.push([ra,0,m,{Project:pn,Activity:l.act||''}])});
+if(!(W>0))return{err:'The certificate has no value.'};E.meta={Amount:+W.toFixed(2)};return E}
+
+### pcosts
+RULES.pcosts=r=>{const p=r.Project;if(!p)return{err:'Select the project.'};const wip=cxMcWip(p);if(!wip)return{err:pAccErr(p,'Project Cost Account (WIP)','')};const off=r['Offset Account'];if(!off)return{err:'Select the offset (credit) account.'};
+const a=cxFx(r.Amount);if(!a)return{err:'Enter the amount.'};const dm={Project:p,Activity:r.Activity||'',El:celOf(p,'',r['Cost Type']||'Other')};
+return a>0?[[wip,a,0,dm],[off,0,a,{Project:p,Activity:r.Activity||''}]]:[[off,-a,0,{Project:p,Activity:r.Activity||''}],[wip,0,-a,dm]]}
+
+### mfj
+RULES.mfj=r=>{const L=(r.Lines||[]).filter(l=>N(l.dr)||N(l.cr));if(!L.length)return{err:'The journal has no amounts.'};
+return L.map(l=>[l.acct,N(l.dr),N(l.cr),{Project:r.Project||'','Cost Centre':r['Cost Centre']||'',Activity:r.Activity||'',Nar:r.Narration||''}])}
+
+### sinvc
+RULES.sinvc=r=>r&&r.DT?dtRule('sinvc',r):dt_rsinvc(r)
+
+### sinv
+RULES.sinv=r=>r&&r.DT?dtRule('sinv',r):dt_rsinv(r)

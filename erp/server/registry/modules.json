@@ -1,0 +1,4812 @@
+[
+ {
+  "id": "ov",
+  "n": "Overview",
+  "d": "KPIs and drill-down",
+  "s": []
+ },
+ {
+  "id": "md",
+  "n": "Master Data",
+  "d": "Organisation, parties, items, accounts",
+  "s": [
+   {
+    "k": "departments",
+    "l": "Departments",
+    "f": [
+     "Code",
+     "Name",
+     "Manager",
+     "Cost Centre:ref:costcenters",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🏛️"
+   },
+   {
+    "k": "designations",
+    "l": "Designations",
+    "f": [
+     "Code",
+     "Name",
+     "Department:ref:departments",
+     "Grade",
+     "OT Eligible:sel:Yes|No",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🎖️"
+   },
+   {
+    "k": "employees",
+    "l": "Employees",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Nationality",
+     "Emirates ID",
+     "Department:ref:departments",
+     "Designation:ref:designations",
+     "Project:ref:projects",
+     "Date of Birth:date",
+     "Place of Birth",
+     "Join Date:date",
+     "Basic:num",
+     "Housing:num",
+     "Transport:num",
+     "Other:num",
+     "IBAN",
+     "Status:sel:Active|Inactive|Terminated",
+     "Last Rejoin Date:date",
+     "Last Leave Date:date",
+     "OT Eligible:sel:No|Yes",
+     "EOSB Eligible:sel:Yes|No",
+     "Vacation Pay Eligible:sel:Yes|No",
+     "Air Ticket Eligible:sel:No|Yes",
+     "Air Ticket Monthly:num",
+     "Benefit-1 Eligible:sel:No|Yes",
+     "Benefit-1 Monthly:num",
+     "Benefit-2 Eligible:sel:No|Yes",
+     "Benefit-2 Monthly:num",
+     "Salary Debit Acct:ref:coa",
+     "Salary Credit Acct:ref:coa",
+     "EOSB Prov Debit Acct:ref:coa",
+     "EOSB Prov Credit Acct:ref:coa",
+     "Leave Prov Debit Acct:ref:coa",
+     "Leave Prov Credit Acct:ref:coa",
+     "Benefits Prov Debit Acct:ref:coa",
+     "Benefits Prov Credit Acct:ref:coa",
+     "Opening Leave Days:num",
+     "Opening Leave Prov:num",
+     "Opening EOSB Prov:num",
+     "Employee Company:ref:companies",
+     "Paying Company:ref:companies",
+     "Gender:sel:Male|Female",
+     "Marital Status:sel:Single|Married|Divorced|Widowed",
+     "First Name",
+     "Middle Name",
+     "Last Name",
+     "MOL ID",
+     "MOL ID Issue:date",
+     "MOL ID Expiry:date",
+     "Personal No",
+     "Grade",
+     "Employment Type:sel:Full-time|Part-time|Contract|Temporary",
+     "Contract Start:date",
+     "Contract End:date",
+     "Probation End:date",
+     "Cost Type:sel:Direct project|Multi project|Direct manufacturing|Indirect manufacturing|Site overhead|Admin|Sales and marketing|Mixed",
+     "Allocation Method:sel:Timesheet|Fixed split|Headcount|Revenue|Direct labour hours",
+     "Default Payroll Project:ref:ppc",
+     "Food:num",
+     "Mobile:num",
+     "Normal OT Rate %:num",
+     "OT-2 Rate %:num",
+     "Holiday OT Rate %:num",
+     "Max OT Hrs:num",
+     "Std Hrs Per Day:num",
+     "Std Working Days:num",
+     "Weekly Rest Day:sel:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday",
+     "Payment Method:sel:WPS|Cheque|Cash",
+     "Bank Name",
+     "Bank Branch",
+     "Account No",
+     "SWIFT",
+     "WPS Agent Code",
+     "WPS Routing Code",
+     "Cash GL Account:ref:coa",
+     "OT Expense Acct:ref:coa"
+    ],
+    "ic": "👥",
+    "ac": "EMP",
+    "show": [
+     "Code",
+     "Name",
+     "Nationality",
+     "Designation",
+     "Department",
+     "MOL ID",
+     "Join Date",
+     "Status"
+    ]
+   },
+   {
+    "k": "empr",
+    "l": "Employee Reports",
+    "f": [],
+    "ic": "📋",
+    "c": "empr"
+   },
+   {
+    "k": "customers",
+    "l": "Customers",
+    "f": [
+     "Code",
+     "Name",
+     "TRN",
+     "Phone",
+     "Email",
+     "Payment Terms",
+     "Credit Limit:num",
+     "Credit Days:num",
+     "Credit Control:sel:Block (override by approval)|Warn only",
+     "Status:sel:Active|Inactive|Incomplete",
+     "Address",
+     "Country:sel:United Arab Emirates|Saudi Arabia|Bahrain|Kuwait|Oman|Qatar|Other",
+     "Emirate:sel:|Abu Dhabi|Dubai|Sharjah|Ajman|Umm Al Quwain|Ras Al Khaimah|Fujairah",
+     "Delivery Address",
+     "Salesperson",
+     "Default Project:ref:projects",
+     "Opening Balance:num"
+    ],
+    "ic": "🤝",
+    "hook": ""
+   },
+   {
+    "k": "suppliers",
+    "l": "Suppliers",
+    "f": [
+     "Code",
+     "Name",
+     "TRN",
+     "Phone",
+     "Email",
+     "Portal Access:sel:No|Yes",
+     "Payment Terms",
+     "Retention %:num",
+     "IBAN",
+     "Status:sel:Active|Inactive|Incomplete",
+     "Address",
+     "Country:sel:United Arab Emirates|Saudi Arabia|Bahrain|Kuwait|Oman|Qatar|Other",
+     "Emirate:sel:|Abu Dhabi|Dubai|Sharjah|Ajman|Umm Al Quwain|Ras Al Khaimah|Fujairah",
+     "Opening Balance:num",
+     "License Type:sel:|Trading|Manufacturing|Services|Contracting",
+     "License Authority:sel:|Mainland|Free Zone|Offshore",
+     "Industrial License:sel:|Yes|No",
+     "ICV Class:sel:Standard|Government / Free zone authority|Water and electricity|Property / land rent|Local farmer",
+     "ICV Registration No",
+     "ICV Certificate No",
+     "ICV Score %:num",
+     "ICV Issue Date:date",
+     "ICV Expiry Date:date",
+     "ICV Certifying Body",
+     "ICV Status:sel:|Valid|Expired|Pending|Not Certified",
+     "ICV Cost %:num",
+     "ICV Investment %:num",
+     "ICV Emiratization %:num",
+     "ICV Expat %:num",
+     "Preferred Supplier:sel:|Yes|No",
+     "ICV Certificate Link"
+    ],
+    "ic": "🚚",
+    "show": [
+     "Code",
+     "Name",
+     "TRN",
+     "Phone",
+     "Email",
+     "Payment Terms",
+     "Retention %",
+     "IBAN",
+     "Status",
+     "License Type",
+     "ICV Score %",
+     "ICV Status"
+    ],
+    "hook": ""
+   },
+   {
+    "k": "services",
+    "l": "Service Items",
+    "f": [
+     "Code",
+     "Name",
+     "Unit",
+     "Rate:num",
+     "VAT %:num",
+     "Expense Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🛠️"
+   },
+   {
+    "k": "items",
+    "l": "Items",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Sales Description",
+     "Category:ref:categories",
+     "UOM:ref:units",
+     "Type:sel:Trading Goods|Finished Goods|Raw Material|Consumable|Service for sale|Stock|Non-stock|Service",
+     "Can be Sold:sel:Yes|No",
+     "Can be Purchased:sel:Yes|No",
+     "Reorder Level:num",
+     "Minimum Price:num",
+     "Sales VAT:sel:Standard (5%)|Zero-rated|Exempt",
+     "Inventory Account:ref:coa",
+     "Revenue Account:ref:coa",
+     "Cost of Sales Account:ref:coa",
+     "BOM",
+     "Routing",
+     "Standard Cost:num",
+     "Status:sel:Active|Inactive|Obsolete",
+     "Barcode",
+     "Brand",
+     "Manufacturer Part No",
+     "HS Code",
+     "Country of Origin",
+     "Min Stock:num",
+     "Max Stock:num",
+     "Reorder Qty:num",
+     "Lead Time (days):num",
+     "Preferred Supplier:ref:suppliers",
+     "Subcontract Item:sel:No|Yes",
+     "Project Cost Type:ref:costtypes",
+     "Purchase Cost Account:ref:coa",
+     "Remarks"
+    ],
+    "ic": "📦",
+    "hook": "[fn]",
+    "show": [
+     "Code",
+     "Name",
+     "Type",
+     "Category",
+     "UOM",
+     "Can be Sold",
+     "Can be Purchased",
+     "Minimum Price",
+     "Sales VAT",
+     "Inventory Account",
+     "Revenue Account",
+     "Cost of Sales Account"
+    ]
+   },
+   {
+    "k": "categories",
+    "l": "Categories",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Inventory Account:ref:coa",
+     "Cost of Sales Account:ref:coa",
+     "Revenue Account:ref:coa",
+     "Adjustment Gain Account:ref:coa",
+     "Adjustment Loss Account:ref:coa",
+     "Write-down Expense Account:ref:coa",
+     "Provision Account:ref:coa",
+     "Count Frequency:sel:|Monthly|Quarterly|Half-yearly|Yearly",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "📁",
+    "hook": "[fn]",
+    "show": [
+     "Code",
+     "Name",
+     "Inventory Account",
+     "Cost of Sales Account",
+     "Revenue Account",
+     "Count Frequency",
+     "Status"
+    ]
+   },
+   {
+    "k": "units",
+    "l": "Units",
+    "f": [
+     "Code",
+     "Name"
+    ],
+    "ic": "📏"
+   },
+   {
+    "k": "taxcodes",
+    "l": "Tax Codes",
+    "f": [
+     "Code",
+     "Name",
+     "Rate %:num",
+     "Type:sel:Input|Output|Zero-rated|Exempt|Reverse charge|Out of scope",
+     "Applies To:sel:Purchases|Sales",
+     "Reporting Category:sel:|Box 1a - Standard rated supplies in Abu Dhabi|Box 1b - Standard rated supplies in Dubai|Box 1c - Standard rated supplies in Sharjah|Box 1d - Standard rated supplies in Ajman|Box 1e - Standard rated supplies in Umm Al Quwain|Box 1f - Standard rated supplies in Ras Al Khaimah|Box 1g - Standard rated supplies in Fujairah|Box 2 - Tax refunds to tourists|Box 3 - Supplies subject to reverse charge|Box 4 - Zero rated supplies|Box 5 - Exempt supplies|Box 9 - Standard rated expenses"
+    ],
+    "ic": "％"
+   },
+   {
+    "k": "coa",
+    "l": "Chart of Accounts",
+    "f": [
+     "Code",
+     "Name",
+     "Type:sel:Asset|Liability|Equity|Revenue|Cost of sales|Expense",
+     "Parent Code",
+     "Analysis Type:sel:None|Employee|Vehicle|Project|Asset|Supplier|Customer|Custom",
+     "Pop-up Template:ref:antpl"
+    ],
+    "ic": "📒",
+    "c": "coav"
+   },
+   {
+    "k": "paycat",
+    "l": "Analysis Master",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Category",
+     "PAD",
+     "Type:sel:Earning|Deduction|Advance|Recovery|Reimbursement",
+     "Default GL Account:ref:coa",
+     "Debit GL Account:ref:coa",
+     "Credit GL Account:ref:coa",
+     "Affects EOSB:sel:Yes|No",
+     "Affects Leave:sel:Yes|No",
+     "Affects Payroll:sel:Yes|No",
+     "Taxable:sel:Yes|No",
+     "GOSI Applicable:sel:Yes|No",
+     "System:sel:Yes|No",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🏷️",
+    "c": "anmv"
+   },
+   {
+    "k": "empexp",
+    "l": "Employee Expenses Master",
+    "f": [
+     "Code",
+     "Name",
+     "Default GL Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧾"
+   },
+   {
+    "k": "vehcat",
+    "l": "Vehicle Expense Categories",
+    "f": [
+     "Code",
+     "Name",
+     "Default GL Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🚗"
+   },
+   {
+    "k": "costel",
+    "l": "Job Heads (Cost Elements)",
+    "f": [
+     "Code",
+     "Name",
+     "Cost Type:ref:costtypes",
+     "Unit",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧱"
+   },
+   {
+    "k": "costcenters",
+    "l": "Cost Centres",
+    "f": [
+     "Code",
+     "Name",
+     "Manager",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "💼"
+   },
+   {
+    "k": "currencies",
+    "l": "Currencies",
+    "f": [
+     "Code",
+     "Name",
+     "Base:sel:No|Yes"
+    ],
+    "ic": "💱"
+   },
+   {
+    "k": "companies",
+    "l": "Companies",
+    "f": [
+     "Code",
+     "Name",
+     "TRN",
+     "MOL Establishment ID",
+     "Status:sel:Active|Inactive",
+     "Arabic Name",
+     "Company Type:sel:Operating|Holding|Service company|Project company|Dormant",
+     "Functional Currency",
+     "Rate to Group Currency:num",
+     "Ownership %:num",
+     "Parent Company:ref:companies",
+     "Default Company:sel:No|Yes",
+     "Include in Consolidation:sel:Yes|No",
+     "Document Prefix",
+     "Colour:sel:|Teal|Blue|Amber|Rose|Violet|Green|Slate"
+    ],
+    "ic": "🏢",
+    "hook": "[fn]",
+    "show": [
+     "Code",
+     "Name",
+     "TRN",
+     "MOL Establishment ID",
+     "Company Type",
+     "Ownership %",
+     "Default Company",
+     "Status"
+    ]
+   },
+   {
+    "k": "branches",
+    "l": "Branches",
+    "f": [
+     "Code",
+     "Name",
+     "Address",
+     "TRN"
+    ],
+    "ic": "🏢"
+   },
+   {
+    "k": "stores",
+    "l": "Stores",
+    "f": [
+     "Code",
+     "Name",
+     "Location",
+     "Project:ref:projects",
+     "Store Type:sel:Main warehouse|Site store|Workshop|Showroom|Consignment|Quarantine or damaged",
+     "Branch:ref:branches",
+     "Storekeeper:ref:employees",
+     "Cost Centre:ref:costcenters",
+     "Status:sel:Active|Inactive",
+     "Remarks"
+    ],
+    "ic": "🏬",
+    "hook": "[fn]",
+    "show": [
+     "Code",
+     "Name",
+     "Store Type",
+     "Location",
+     "Project",
+     "Branch",
+     "Storekeeper",
+     "Status"
+    ]
+   },
+   {
+    "k": "banks",
+    "l": "Bank Accounts",
+    "f": [
+     "Code",
+     "Bank",
+     "Account No",
+     "IBAN",
+     "Currency",
+     "GL Account:ref:coa",
+     "WPS Agent Code",
+     "WPS Routing Code"
+    ],
+    "ic": "🏦"
+   },
+   {
+    "k": "cashboxes",
+    "l": "Cash Boxes",
+    "f": [
+     "Code",
+     "Name",
+     "Custodian",
+     "GL Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "💵"
+   },
+   {
+    "k": "pholders",
+    "l": "Petty Cash Holders",
+    "f": [
+     "Code",
+     "Holder Name",
+     "Employee:ref:employees",
+     "Cash Account:ref:coa",
+     "Float Limit:num",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "👛",
+    "ac": "PCH"
+   },
+   {
+    "k": "payterms",
+    "l": "Payment Terms",
+    "f": [
+     "Code",
+     "Name",
+     "Days:num"
+    ],
+    "ic": "💳"
+   }
+  ]
+ },
+ {
+  "id": "pj",
+  "n": "Projects",
+  "d": "Planning, budgets, cost control",
+  "s": [
+   {
+    "k": "projects",
+    "l": "Projects",
+    "f": [
+     "Code",
+     "Name",
+     "Client:ref:customers",
+     "Location",
+     "Description",
+     "Contract No",
+     "Contract Value:num",
+     "Start:date",
+     "End:date",
+     "Manager",
+     "Project Cost Account:ref:coa",
+     "Revenue Type:sel:Point in time|Over time",
+     "Retention %:num",
+     "Revenue Account:ref:coa",
+     "Unbilled Receivable Account:ref:coa",
+     "Retention Receivable Account:ref:coa",
+     "Measurement Method:sel:|Certified quantities|Approved certificates|Cost to cost",
+     "Advance Recovery %:num",
+     "Retention Cap %:num",
+     "Budget Control:sel:|Hard Block|Soft Warning|No Control",
+     "Warning Threshold %:num",
+     "Status:sel:Planning|Active|On hold|Closed",
+     "Total Budget Cost:num",
+     "Total Est. Cost to Complete:num"
+    ],
+    "ic": "📁",
+    "hook": "[fn]"
+   },
+   {
+    "k": "costtypes",
+    "l": "Cost Types",
+    "f": [
+     "Code",
+     "Name",
+     "Nature:sel:Cost|Revenue",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧩"
+   },
+   {
+    "k": "wbs",
+    "l": "Project Activity Progress",
+    "f": [
+     "Project:ref:projects",
+     "Activity",
+     "Cost Code",
+     "Cost Type:ref:costtypes",
+     "Start:date",
+     "End:date",
+     "Progress %:num",
+     "Budget:num",
+     "Est-to-Complete:num"
+    ],
+    "ic": "🪜",
+    "hook": "[fn]",
+    "c": "wbsV"
+   },
+   {
+    "k": "jam",
+    "l": "Job Activity Master",
+    "f": [
+     "Code",
+     "Name",
+     "Level",
+     "Parent",
+     "Active:sel:Yes|No"
+    ],
+    "ic": "🌳",
+    "c": "jamV"
+   },
+   {
+    "k": "jab",
+    "l": "Budget & Cost to Complete",
+    "f": [],
+    "ic": "🎯",
+    "c": "jabV"
+   },
+   {
+    "k": "jar",
+    "l": "Activity Budget & Forecast Reports",
+    "f": [],
+    "ic": "📊",
+    "c": "jarV"
+   },
+   {
+    "k": "crp",
+    "l": "Project Comprehensive Report",
+    "f": [],
+    "ic": "🏗️",
+    "c": "crpV"
+   },
+   {
+    "k": "budgets",
+    "l": "Budgets",
+    "f": [
+     "Project:ref:projects",
+     "Cost Type:ref:costtypes",
+     "Budget:num"
+    ],
+    "ic": "🎯",
+    "c": "cxBudV"
+   },
+   {
+    "k": "milestones",
+    "l": "Milestones",
+    "f": [
+     "Project:ref:projects",
+     "Milestone",
+     "Due:date",
+     "Value:num",
+     "Status:sel:Pending|Done"
+    ],
+    "ic": "🚩",
+    "c": "cxMsV"
+   },
+   {
+    "k": "pcosts",
+    "l": "Manual Project Costs",
+    "f": [
+     "Project:ref:projects",
+     "Cost Type:ref:costtypes",
+     "Source:sel:Inventory issue|Subcontract|Asset|Journal|Overhead|Reclassification|Field Expense|Other",
+     "Activity:ref:wbs",
+     "Cost Code",
+     "Description",
+     "Offset Account:ref:coa",
+     "Date:date",
+     "Amount:num"
+    ],
+    "ic": "🧾",
+    "hook": "[fn]",
+    "c": "cxMcV",
+    "pre": "MPC"
+   },
+   {
+    "k": "commit",
+    "l": "Manual Commitments",
+    "f": [
+     "Project:ref:projects",
+     "Cost Type:ref:costtypes",
+     "Activity:ref:wbs",
+     "Type:sel:Verbal Subcontract|Verbal Supply|Estimated Utility|Estimated Site Expense|Other",
+     "Description",
+     "Counterparty",
+     "Date:date",
+     "Amount:num",
+     "Consumed:num",
+     "Valid From:date",
+     "Valid To:date",
+     "Status:sel:Active|Closed|Open"
+    ],
+    "ic": "📌",
+    "hook": "[fn]",
+    "c": "cxCmV",
+    "pre": "MCM"
+   },
+   {
+    "k": "pcc",
+    "l": "Project Cost Control",
+    "f": [],
+    "ic": "📊",
+    "c": "pccv"
+   },
+   {
+    "k": "jcb",
+    "l": "Job Cost vs Budget",
+    "f": [],
+    "ic": "📑",
+    "c": "jcbv"
+   },
+   {
+    "k": "pjclose",
+    "l": "Project Completion Transfer",
+    "f": [],
+    "ic": "🏁",
+    "c": "pjclose"
+   },
+   {
+    "k": "boq",
+    "l": "BOQ & Budgets",
+    "f": [],
+    "ic": "📐",
+    "c": "cwBoqV"
+   },
+   {
+    "k": "cwg",
+    "l": "Stage Gates",
+    "f": [],
+    "ic": "🚦",
+    "c": "cwgV"
+   },
+   {
+    "k": "cwm",
+    "l": "Measurement Sheets",
+    "f": [],
+    "ic": "📏",
+    "c": "cwmV",
+    "pre": "MS"
+   },
+   {
+    "k": "cwo",
+    "l": "Change Orders",
+    "f": [],
+    "ic": "🔁",
+    "c": "cwoV",
+    "pre": "CO"
+   },
+   {
+    "k": "ipc",
+    "l": "Payment Certificates (IPC)",
+    "f": [],
+    "ic": "🧾",
+    "c": "ipcV",
+    "pre": "IPC"
+   },
+   {
+    "k": "cwe",
+    "l": "Month-End Close",
+    "f": [],
+    "ic": "🗓️",
+    "c": "cweV"
+   },
+   {
+    "k": "cwx",
+    "l": "Final Account & Closing",
+    "f": [],
+    "ic": "🏁",
+    "c": "cwxV"
+   },
+   {
+    "k": "cwd",
+    "l": "Project Profitability",
+    "f": [],
+    "ic": "💹",
+    "c": "cwdV"
+   },
+   {
+    "k": "cwr",
+    "l": "Project Control Reports",
+    "f": [],
+    "ic": "📚",
+    "c": "cwrV"
+   },
+   {
+    "k": "cws",
+    "l": "Project Control Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "cwsV"
+   },
+   {
+    "k": "bver",
+    "l": "Budget Versions",
+    "f": [],
+    "ic": "🧬",
+    "pre": "BV",
+    "ro": 1
+   },
+   {
+    "k": "pclose",
+    "l": "Month-End Closings",
+    "f": [],
+    "ic": "🗓️",
+    "pre": "MEC",
+    "ro": 1
+   }
+  ]
+ },
+ {
+  "id": "pu",
+  "n": "Purchase",
+  "d": "Requisition to payment",
+  "s": [
+   {
+    "k": "pr",
+    "l": "Purchase Requisition",
+    "f": [
+     "Date:date",
+     "Requester",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Priority:sel:Normal|High|Urgent",
+     "Required Date:date",
+     "Reference",
+     "Status:sel:Draft|Submitted|Under Review|Approved|Rejected|Partially Converted|Fully Converted|Closed|Cancelled",
+     "Branch",
+     "Project Ref",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "PR",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "nt": 1
+   },
+   {
+    "k": "bids",
+    "l": "Bid Tabulation",
+    "f": [],
+    "ic": "⚖️",
+    "c": "btv"
+   },
+   {
+    "k": "lpo",
+    "l": "Purchase Orders (LPO)",
+    "f": [
+     "Date:date",
+     "Supplier:ref:suppliers",
+     "Project:ref:projects",
+     "PR No",
+     "Bid No",
+     "Expected Delivery:date",
+     "Payment Terms",
+     "Status:sel:Draft|Pending Budget Override|Approved|Partially Received|Fully Received|Closed|Cancelled",
+     "Department:ref:departments",
+     "Project Ref",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Delivery Location",
+     "Supplier Ref",
+     "Remarks"
+    ],
+    "pre": "LPO",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "bgs",
+    "l": "Budget Status",
+    "f": [],
+    "ic": "📊",
+    "c": "bgv"
+   },
+   {
+    "k": "grn",
+    "l": "GRN / Service Receipt",
+    "f": [
+     "Date:date",
+     "Supplier:ref:suppliers",
+     "LPO No",
+     "Project:ref:projects",
+     "Store:ref:stores",
+     "Delivery Note",
+     "Supplier DN",
+     "Status:sel:Draft|Posted|Partially Invoiced|Fully Invoiced|Closed|Cancelled",
+     "PR No",
+     "Department:ref:departments",
+     "Project Ref",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "GRN",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "sinv",
+    "l": "Purchase Invoice",
+    "f": [
+     "Date:date",
+     "Supplier:ref:suppliers",
+     "Supplier Inv No",
+     "GRN No",
+     "LPO No",
+     "Due Date:date",
+     "Project:ref:projects",
+     "Status:sel:Draft|Posted|Partially Paid|Paid|Cancelled",
+     "Store:ref:stores",
+     "Department:ref:departments",
+     "Project Ref",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "PI",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service",
+     "GL Account"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "match",
+    "l": "3-Way Match",
+    "f": [],
+    "ic": "🔗",
+    "c": "m3v"
+   },
+   {
+    "k": "pcn",
+    "l": "Supplier Credit / Debit Notes",
+    "f": [
+     "Date:date",
+     "Supplier:ref:suppliers",
+     "Invoice No",
+     "Type:sel:Credit|Debit",
+     "Project:ref:projects",
+     "Reason",
+     "Status:sel:Draft|Posted|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "SCN",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service",
+     "GL Account"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "sret",
+    "l": "Supplier Return",
+    "f": [
+     "Date:date",
+     "Supplier:ref:suppliers",
+     "GRN No",
+     "Project:ref:projects",
+     "Reason",
+     "Status:sel:Draft|Posted|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "SR",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "spd",
+    "l": "Supplier Portal Inbox",
+    "f": [],
+    "ic": "🌐",
+    "c": "spdv"
+   },
+   {
+    "k": "spv",
+    "l": "Portal Users",
+    "f": [],
+    "ic": "👥",
+    "c": "spuv"
+   },
+   {
+    "k": "sps",
+    "l": "Portal Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "spsv"
+   },
+   {
+    "k": "spa",
+    "l": "Portal Audit Log",
+    "f": [],
+    "ic": "🛡️",
+    "c": "spav"
+   },
+   {
+    "k": "crs",
+    "l": "Supplier Comprehensive Report",
+    "f": [],
+    "ic": "🏭",
+    "c": "crsV"
+   },
+   {
+    "k": "rfq",
+    "l": "RFQ",
+    "f": [
+     "PR No",
+     "Supplier:ref:suppliers",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "RFQ",
+    "tx": 1
+   },
+   {
+    "k": "quotes",
+    "l": "Supplier Quotations",
+    "f": [
+     "RFQ No",
+     "Supplier:ref:suppliers",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "SQ",
+    "tx": 1
+   },
+   {
+    "k": "p_pay",
+    "l": "Supplier Payments",
+    "f": [],
+    "ic": "💸",
+    "to": "/fi/pv"
+   },
+   {
+    "k": "p_soa",
+    "l": "Supplier SOA",
+    "f": [],
+    "ic": "📒",
+    "to": "/fi/soa"
+   },
+   {
+    "k": "p_age",
+    "l": "AP Aging",
+    "f": [],
+    "ic": "⏳",
+    "to": "/fi/aging"
+   },
+   {
+    "k": "p_grnp",
+    "l": "GRN Payables Report",
+    "f": [],
+    "ic": "🧾",
+    "to": "/fi/grnp"
+   },
+   {
+    "k": "p_reg",
+    "l": "Purchase Registers & Analysis",
+    "f": [],
+    "ic": "📚",
+    "to": "/fi/regs"
+   },
+   {
+    "k": "lk_pbs",
+    "l": "Budget Control Settings",
+    "f": [],
+    "ic": "🎯",
+    "to": "/pj/cws"
+   },
+   {
+    "k": "lk_pboq",
+    "l": "Project Cost Budgets (BOQ)",
+    "f": [],
+    "ic": "📐",
+    "to": "/pj/boq"
+   },
+   {
+    "k": "lk_pcg",
+    "l": "Procurement Gate",
+    "f": [],
+    "ic": "🚦",
+    "to": "/pj/cwg"
+   },
+   {
+    "k": "lk_pbr",
+    "l": "Commitments vs Budget",
+    "f": [],
+    "ic": "📌",
+    "to": "/pj/cwr"
+   }
+  ]
+ },
+ {
+  "id": "sa",
+  "n": "Sales",
+  "d": "Quotation to receipt",
+  "s": [
+   {
+    "k": "sq",
+    "l": "Quotations",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Valid Until:date",
+     "Salesperson",
+     "Project:ref:projects",
+     "Payment Terms",
+     "Delivery Address",
+     "Status:sel:Draft|Submitted|Approved|Partially Ordered|Fully Ordered|Rejected|Closed|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "QT",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "so",
+    "l": "Sales Orders",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Quotation No",
+     "Contract No",
+     "Salesperson",
+     "Project:ref:projects",
+     "Payment Terms",
+     "Delivery Address",
+     "Status:sel:Draft|Approved|Partially Delivered|Fully Delivered|Closed|Cancelled",
+     "Department:ref:departments",
+     "Project Ref",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "SO",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "dn",
+    "l": "Delivery Notes (GDN)",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "SO No",
+     "Store:ref:stores",
+     "Delivery Address",
+     "Project:ref:projects",
+     "Vehicle No",
+     "Driver",
+     "Received By",
+     "Received Date:date",
+     "Status:sel:Draft|Posted|Partially Invoiced|Fully Invoiced|Closed|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "GDN",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "sinvc",
+    "l": "Sales Invoices",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Emirate:sel:|Abu Dhabi|Dubai|Sharjah|Ajman|Umm Al Quwain|Ras Al Khaimah|Fujairah",
+     "GDN No",
+     "SO No",
+     "Certificate No",
+     "Retention %:num",
+     "Due Date:date",
+     "Supply Date:date",
+     "Project:ref:projects",
+     "Type:sel:Standard|Progress|Milestone|Retention|Advance|Service",
+     "Status:sel:Draft|Posted|Partially Paid|Paid|Cancelled",
+     "Store:ref:stores",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Reference",
+     "Remarks"
+    ],
+    "pre": "SI",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Asset",
+     "Service",
+     "GL Account"
+    ],
+    "direct": 1,
+    "show": [
+     "Date",
+     "Customer",
+     "GDN No",
+     "SO No",
+     "Certificate No",
+     "Retention %",
+     "Due Date",
+     "Supply Date"
+    ],
+    "xb": "<button class=\"btn\" onclick=\"invFromDn()\">Invoice from GDNs</button>"
+   },
+   {
+    "k": "cn",
+    "l": "Credit / Debit Notes",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Invoice No",
+     "Type:sel:Credit|Debit",
+     "Reason:sel:Price adjustment|Quantity adjustment|Discount|Goods returned (no stock effect)|Other",
+     "Project:ref:projects",
+     "Status:sel:Draft|Posted|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "CN",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory",
+     "Service",
+     "GL Account"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "sr",
+    "l": "Sales Returns",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "GDN No",
+     "Invoice No",
+     "Store:ref:stores",
+     "Project:ref:projects",
+     "Reason",
+     "Status:sel:Draft|Posted|Cancelled",
+     "Department:ref:departments",
+     "Activity:ref:wbs",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "SRT",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Inventory"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "pcert",
+    "l": "Progress Certificates",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Project:ref:projects",
+     "Period From:date",
+     "Period To:date",
+     "Certificate Ref",
+     "Retention %:num",
+     "Client Approval Date:date",
+     "Status:sel:Draft|Approved|Partially Invoiced|Invoiced|Cancelled",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "PCERT",
+    "tx": 1,
+    "lines": 1,
+    "lt": [
+     "Service"
+    ],
+    "direct": 1
+   },
+   {
+    "k": "vo",
+    "l": "Variation Orders",
+    "f": [
+     "Date:date",
+     "Project:ref:projects",
+     "VO Ref",
+     "Description",
+     "Contract Value Change:num",
+     "Cost Budget Change:num",
+     "Cost Type:ref:costtypes",
+     "Activity:ref:wbs",
+     "Reason",
+     "Status:sel:Draft|Approved|Cancelled"
+    ],
+    "pre": "VO",
+    "tx": 1
+   },
+   {
+    "k": "rrun",
+    "l": "Revenue Recognition (Contracts)",
+    "f": [],
+    "ic": "📈",
+    "c": "rrunv"
+   },
+   {
+    "k": "cntr",
+    "l": "Contracts & Retention",
+    "f": [],
+    "ic": "📑",
+    "c": "cntrv"
+   },
+   {
+    "k": "pdc",
+    "l": "PDC Register",
+    "f": [],
+    "ic": "🧾",
+    "c": "pdcv"
+   },
+   {
+    "k": "cage",
+    "l": "Customer Ageing",
+    "f": [],
+    "ic": "⏳",
+    "c": "cagev"
+   },
+   {
+    "k": "ecl",
+    "l": "Credit Loss Run (ECL)",
+    "f": [],
+    "ic": "📉",
+    "c": "eclv"
+   },
+   {
+    "k": "bdw",
+    "l": "Bad Debt Write-offs",
+    "f": [
+     "Date:date",
+     "Customer:ref:customers",
+     "Invoice No",
+     "Amount:num",
+     "Reason",
+     "Status:sel:Draft|Submitted|Posted|Rejected|Cancelled"
+    ],
+    "pre": "BDW",
+    "tx": 1,
+    "xb": "<button class=\"btn pri\" onclick=\"bdwDlg()\">Write off an invoice</button>"
+   },
+   {
+    "k": "srec",
+    "l": "Sales Reconciliations",
+    "f": [],
+    "ic": "⚖️",
+    "c": "srecv"
+   },
+   {
+    "k": "crc",
+    "l": "Customer Comprehensive Report",
+    "f": [],
+    "ic": "🤝",
+    "c": "crcV"
+   },
+   {
+    "k": "rc",
+    "l": "Customer Receipts",
+    "f": [
+     "Customer:ref:customers",
+     "Payment Type:sel:Bill Settlement|Advance|On Account|Apply Advance|Bad Debt Recovery",
+     "Method:sel:Cash|Bank Transfer|Cheque",
+     "Bank",
+     "Reference",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "RV",
+    "tx": 1
+   },
+   {
+    "k": "unbilled",
+    "l": "Unbilled Revenue",
+    "f": [
+     "Project:ref:projects",
+     "Customer:ref:customers",
+     "Work Done:num",
+     "Billed:num"
+    ],
+    "ic": "⏳"
+   },
+   {
+    "k": "s_soa",
+    "l": "Customer SOA",
+    "f": [],
+    "ic": "📒",
+    "to": "/fi/soa"
+   },
+   {
+    "k": "s_age",
+    "l": "AR Aging",
+    "f": [],
+    "ic": "⏳",
+    "to": "/fi/aging"
+   },
+   {
+    "k": "s_reg",
+    "l": "Sales Registers & Analysis",
+    "f": [],
+    "ic": "📚",
+    "to": "/fi/regs"
+   },
+   {
+    "k": "lk_ipc",
+    "l": "Payment Certificates (IPC)",
+    "f": [],
+    "ic": "🧾",
+    "to": "/pj/ipc"
+   },
+   {
+    "k": "lk_cwo",
+    "l": "Change Orders",
+    "f": [],
+    "ic": "🔁",
+    "to": "/pj/cwo"
+   },
+   {
+    "k": "lk_boq",
+    "l": "BOQ & Contract Value",
+    "f": [],
+    "ic": "📐",
+    "to": "/pj/boq"
+   },
+   {
+    "k": "lk_cwr",
+    "l": "Billing & Contract Reports",
+    "f": [],
+    "ic": "📚",
+    "to": "/pj/cwr"
+   }
+  ]
+ },
+ {
+  "id": "in",
+  "n": "Inventory",
+  "d": "Stores and valuation",
+  "s": [
+   {
+    "k": "rec",
+    "l": "Stock Receipt",
+    "f": [
+     "Store:ref:stores",
+     "Receipt Type",
+     "Supplier:ref:suppliers",
+     "Reference",
+     "Credit Account:ref:coa",
+     "Item:ref:items",
+     "Qty:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "SRC",
+    "tx": 1,
+    "show": [
+     "Date",
+     "Store",
+     "Receipt Type",
+     "Reference",
+     "Item",
+     "Qty",
+     "Status"
+    ]
+   },
+   {
+    "k": "iss",
+    "l": "Stock Issue Entry",
+    "f": [
+     "Date:date",
+     "Store:ref:stores",
+     "Item:ref:items",
+     "Qty:num",
+     "Reference",
+     "Status:sel:Draft|Posted|Cancelled",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Remarks"
+    ],
+    "pre": "SIS",
+    "tx": 1,
+    "lines": 1,
+    "direct": 1
+   },
+   {
+    "k": "cons",
+    "l": "Material Consumption",
+    "f": [
+     "Store:ref:stores",
+     "Item:ref:items",
+     "Qty:num",
+     "Cost Code",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "MC",
+    "tx": 1
+   },
+   {
+    "k": "trf",
+    "l": "Transfers",
+    "f": [
+     "From Store:ref:stores",
+     "To Store:ref:stores",
+     "Mode:sel:Immediate|Two-step",
+     "Reference",
+     "Item:ref:items",
+     "Qty:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "TRF",
+    "tx": 1,
+    "show": [
+     "Date",
+     "From Store",
+     "To Store",
+     "Mode",
+     "Item",
+     "Qty",
+     "Status"
+    ]
+   },
+   {
+    "k": "adj",
+    "l": "Adjustments",
+    "f": [
+     "Store:ref:stores",
+     "Item:ref:items",
+     "Qty:num",
+     "Direction:sel:Decrease|Increase|Mixed",
+     "Reason",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "ADJ",
+    "tx": 1,
+    "show": [
+     "Date",
+     "Store",
+     "Item",
+     "Direction",
+     "Qty",
+     "Reason",
+     "Status"
+    ]
+   },
+   {
+    "k": "cnt",
+    "l": "Stock Count",
+    "f": [
+     "Store:ref:stores",
+     "Scope",
+     "Counted By",
+     "Item:ref:items",
+     "System Qty:num",
+     "Counted Qty:num",
+     "Net Variance:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "CNT",
+    "tx": 1,
+    "show": [
+     "Date",
+     "Store",
+     "Scope",
+     "Item",
+     "System Qty",
+     "Counted Qty",
+     "Net Variance",
+     "Status"
+    ]
+   },
+   {
+    "k": "nrv",
+    "l": "Stock Write-down (NRV)",
+    "f": [
+     "Store:ref:stores",
+     "Basis",
+     "Item:ref:items",
+     "Provision Needed:num",
+     "Net Movement:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "NRV",
+    "tx": 1,
+    "show": [
+     "Date",
+     "Store",
+     "Basis",
+     "Item",
+     "Provision Needed",
+     "Net Movement",
+     "Status"
+    ]
+   },
+   {
+    "k": "opening",
+    "l": "Opening Stock",
+    "f": [
+     "Store:ref:stores",
+     "Item:ref:items",
+     "Qty:num",
+     "Unit Cost:num"
+    ],
+    "ic": "🏁"
+   },
+   {
+    "k": "stkv",
+    "l": "Stock Ledger & Valuation",
+    "f": [],
+    "ic": "📊",
+    "c": "stkv"
+   },
+   {
+    "k": "cri",
+    "l": "Item Comprehensive Report",
+    "f": [],
+    "ic": "📦",
+    "c": "criV"
+   },
+   {
+    "k": "ivrn",
+    "l": "Adjustment Reasons",
+    "f": [
+     "Code",
+     "Name",
+     "Direction:sel:Both|Decrease only|Increase only",
+     "GL Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "📝",
+    "hook": "[fn]"
+   },
+   {
+    "k": "ivs",
+    "l": "Inventory Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "ivSetV"
+   },
+   {
+    "k": "ivd",
+    "l": "Inventory Dashboard",
+    "f": [],
+    "ic": "📊",
+    "c": "ivDashV"
+   },
+   {
+    "k": "ivr",
+    "l": "Inventory Reports",
+    "f": [],
+    "ic": "📚",
+    "c": "ivRepHub"
+   },
+   {
+    "k": "ivro",
+    "l": "Reorder Planning",
+    "f": [],
+    "ic": "🛒",
+    "c": "ivRoV"
+   }
+  ]
+ },
+ {
+  "id": "fa",
+  "n": "Fixed Assets",
+  "d": "Register to disposal",
+  "s": [
+   {
+    "k": "assets",
+    "l": "Asset Register",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Description",
+     "Type:ref:asstype",
+     "Category",
+     "Serial No",
+     "Supplier:ref:suppliers",
+     "Purchase Invoice",
+     "Purchase Date:date",
+     "Cost:num",
+     "VAT Treatment",
+     "Location",
+     "Building / Room",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Custodian:ref:employees",
+     "Handover Date:date",
+     "Method:sel:Straight line|Reducing|Units of use",
+     "Useful Life (yrs):num",
+     "Residual:num",
+     "Start Date:date",
+     "Total Units:num",
+     "Plate No",
+     "Make",
+     "Model",
+     "Year",
+     "Chassis No",
+     "Driver:ref:employees",
+     "Cost Account:ref:coa",
+     "Accum Dep Account:ref:coa",
+     "Dep Expense Account:ref:coa"
+    ],
+    "ic": "🏗️",
+    "show": [
+     "Code",
+     "Name",
+     "Type",
+     "Location",
+     "Custodian",
+     "Purchase Date",
+     "Cost"
+    ]
+   },
+   {
+    "k": "asstype",
+    "l": "Asset Types",
+    "f": [
+     "Name",
+     "Cost Account:ref:coa",
+     "Accum Dep Account:ref:coa",
+     "Dep Expense Account:ref:coa",
+     "Method:sel:Straight line|Reducing|Units of use",
+     "Useful Life (yrs):num",
+     "Residual %:num"
+    ],
+    "ic": "🗂️"
+   },
+   {
+    "k": "fas",
+    "l": "Asset Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "faSetV"
+   },
+   {
+    "k": "adocs",
+    "l": "Asset Documents Status",
+    "f": [],
+    "ic": "📑",
+    "c": "adocs"
+   },
+   {
+    "k": "cra",
+    "l": "Asset Comprehensive Report",
+    "f": [],
+    "ic": "📋",
+    "c": "craV"
+   },
+   {
+    "k": "acq",
+    "l": "Capitalisation",
+    "f": [
+     "Asset Code",
+     "Asset Name",
+     "Cap Type",
+     "Asset Type",
+     "Supplier:ref:suppliers",
+     "Invoice No",
+     "GRN No",
+     "Total Cost:num",
+     "Start Date:date",
+     "Posted",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "CAP",
+    "tx": 1,
+    "show": [
+     "Asset Code",
+     "Asset Name",
+     "Cap Type",
+     "Date",
+     "Supplier",
+     "Invoice No",
+     "Total Cost",
+     "Status",
+     "Posted"
+    ]
+   },
+   {
+    "k": "dep",
+    "l": "Depreciation Run",
+    "f": [],
+    "ic": "📉",
+    "c": "faDepr"
+   },
+   {
+    "k": "areg",
+    "l": "Asset Register Report",
+    "f": [],
+    "ic": "📋",
+    "c": "aregv"
+   },
+   {
+    "k": "fam",
+    "l": "Fixed Asset Movement",
+    "f": [],
+    "ic": "📊",
+    "c": "faMovV"
+   },
+   {
+    "k": "atrf",
+    "l": "Asset Transfer",
+    "f": [
+     "Asset Code",
+     "Asset Name",
+     "From Branch",
+     "From Department",
+     "From Cost Centre",
+     "From Custodian",
+     "To Branch",
+     "To Department",
+     "To Cost Centre",
+     "To Custodian",
+     "Reason",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "AT",
+    "tx": 1,
+    "nt": 1,
+    "show": [
+     "Asset Code",
+     "Asset Name",
+     "Date",
+     "From Department",
+     "To Department",
+     "From Custodian",
+     "To Custodian",
+     "Reason",
+     "Status"
+    ]
+   },
+   {
+    "k": "disp",
+    "l": "Disposal",
+    "f": [
+     "Asset Code",
+     "Asset Name",
+     "Disposal Type",
+     "Buyer",
+     "Proceeds:num",
+     "NBV:num",
+     "Gain Loss:num",
+     "Posted",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "AD",
+    "tx": 1,
+    "show": [
+     "Asset Code",
+     "Asset Name",
+     "Disposal Type",
+     "Date",
+     "Buyer",
+     "Proceeds",
+     "NBV",
+     "Gain Loss",
+     "Status",
+     "Posted"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "hr",
+  "n": "HR & Payroll",
+  "d": "Payroll, leave, EOSB and reports",
+  "s": [
+   {
+    "k": "pdash",
+    "l": "Payroll Dashboard",
+    "f": [],
+    "ic": "📈",
+    "c": "pdash"
+   },
+   {
+    "k": "psett",
+    "l": "Payroll Settings",
+    "f": [],
+    "ic": "🎛️",
+    "c": "psett"
+   },
+   {
+    "k": "ppc",
+    "l": "Payroll Projects",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Destination Type:sel:Project WIP|Project cost|Admin|Selling|Manufacturing WIP|Manufacturing overhead|Site overhead|Intercompany",
+     "Linked Project:ref:projects",
+     "Linked Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Work Centre",
+     "Debit GL Account:ref:coa",
+     "Credit GL Account:ref:coa",
+     "Default Activity:ref:wbs",
+     "Default Cost Category",
+     "Allocation Basis:sel:|Headcount|Direct labour hours|Revenue|Fixed split",
+     "Absorb GL Account:ref:coa",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🎯",
+    "hook": "[fn]",
+    "show": [
+     "Code",
+     "Name",
+     "Destination Type",
+     "Linked Project",
+     "Debit GL Account",
+     "Status"
+    ]
+   },
+   {
+    "k": "shift",
+    "l": "Shift Assignments",
+    "f": [
+     "Employee:ref:employees",
+     "From Date:date",
+     "To Date:date",
+     "Payroll Project:ref:ppc",
+     "Project:ref:projects",
+     "Activity:ref:wbs",
+     "Shift Type:sel:Day|Night|Rotational",
+     "Start Time",
+     "End Time",
+     "Standard Hrs:num",
+     "Working Days Pattern",
+     "Rest Day:sel:|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday",
+     "Status:sel:Active|Inactive",
+     "Notes"
+    ],
+    "ic": "🔁",
+    "pre": "SHF",
+    "hook": "[fn]",
+    "show": [
+     "Employee",
+     "From Date",
+     "To Date",
+     "Payroll Project",
+     "Shift Type",
+     "Status"
+    ]
+   },
+   {
+    "k": "hcal",
+    "l": "Holiday Calendar",
+    "f": [
+     "Date:date",
+     "Name",
+     "Type:sel:Public holiday|Company holiday|Other"
+    ],
+    "ic": "🎉",
+    "hook": "[fn]"
+   },
+   {
+    "k": "mpar",
+    "l": "Monthly Parameters",
+    "f": [],
+    "ic": "🗓️",
+    "c": "mpv"
+   },
+   {
+    "k": "ts",
+    "l": "Timesheet",
+    "f": [
+     "Employee:ref:employees",
+     "Year:num",
+     "Month:sel:1|2|3|4|5|6|7|8|9|10|11|12",
+     "Month Days:num",
+     "Standard Hrs:num",
+     "Holiday Hrs:num",
+     "Normal OT Hrs:num",
+     "Sick Hrs:num",
+     "Absent Hrs:num",
+     "Annual Leave Hrs:num",
+     "Project:ref:projects",
+     "Activity:ref:wbs",
+     "Designation (auto)",
+     "Department (auto)",
+     "PP Code",
+     "Budget Hrs:num",
+     "Attendance Hrs:num",
+     "Paid Holiday Hrs:num",
+     "OT2 Hrs:num",
+     "Holiday OT Hrs:num",
+     "Status"
+    ],
+    "ic": "🕒",
+    "c": "tsv"
+   },
+   {
+    "k": "add",
+    "l": "Additions",
+    "f": [],
+    "ic": "➕",
+    "c": "addv",
+    "pre": "ADD",
+    "yr": 1
+   },
+   {
+    "k": "ded",
+    "l": "Deductions",
+    "f": [],
+    "ic": "➖",
+    "c": "dedv",
+    "pre": "DED",
+    "yr": 1
+   },
+   {
+    "k": "adjr",
+    "l": "Additions & Deductions Reports",
+    "f": [],
+    "ic": "🧾",
+    "c": "ajrv"
+   },
+   {
+    "k": "loan",
+    "l": "Loans & Advances",
+    "f": [
+     "Employee:ref:employees",
+     "Type:sel:Loan|Advance",
+     "Monthly Instalment:num",
+     "Start Year:num",
+     "Start Month:sel:1|2|3|4|5|6|7|8|9|10|11|12",
+     "Description",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "LN",
+    "tx": 1,
+    "ic": "🤝",
+    "c": "loanv",
+    "yr": 1
+   },
+   {
+    "k": "loanx",
+    "l": "Loans & Advances Reports",
+    "f": [],
+    "ic": "📑",
+    "c": "elnrv"
+   },
+   {
+    "k": "loanr",
+    "l": "Loan Balances",
+    "f": [],
+    "ic": "📒",
+    "c": "loanr"
+   },
+   {
+    "k": "smv",
+    "l": "Salary Modification",
+    "f": [],
+    "ic": "💹",
+    "c": "smvv",
+    "pre": "SMV"
+   },
+   {
+    "k": "run",
+    "l": "Payroll Run",
+    "f": [],
+    "ic": "▶️",
+    "c": "prun"
+   },
+   {
+    "k": "ppay",
+    "l": "Payroll Payment",
+    "f": [],
+    "ic": "💸",
+    "c": "ppay"
+   },
+   {
+    "k": "pdel",
+    "l": "Delete Month Payroll",
+    "f": [],
+    "ic": "🗑️",
+    "c": "pdelv"
+   },
+   {
+    "k": "lbal",
+    "l": "Leave Balance",
+    "f": [],
+    "ic": "🏖️",
+    "c": "lbal"
+   },
+   {
+    "k": "lreg",
+    "l": "Leave Register",
+    "f": [
+     "Employee:ref:employees",
+     "Entry Type:sel:Annual leave|Absent|Sick leave|Unpaid leave|Paid Leave",
+     "Leave Date:date",
+     "Expected Rejoin:date",
+     "Days:num",
+     "Excess Days (auto):num",
+     "Remarks",
+     "Designation (auto)",
+     "Last Rejoin (auto)",
+     "Department (auto)",
+     "Contact During Leave",
+     "City",
+     "Email",
+     "Application Date:date"
+    ],
+    "ic": "📅",
+    "hook": "[fn]"
+   },
+   {
+    "k": "rjn",
+    "l": "Rejoin Entry",
+    "f": [],
+    "ic": "🔁",
+    "c": "rjv",
+    "pre": "RJ",
+    "yr": 1
+   },
+   {
+    "k": "hrfm",
+    "l": "Leave, Rejoin & Exit Forms",
+    "f": [],
+    "ic": "🖨️",
+    "c": "hrfv"
+   },
+   {
+    "k": "als",
+    "l": "Annual Leave Settlement",
+    "f": [],
+    "ic": "🏖️",
+    "c": "alsv",
+    "pre": "ALS"
+   },
+   {
+    "k": "eosb",
+    "l": "EOSB Calculator",
+    "f": [],
+    "ic": "🧮",
+    "c": "eosbv"
+   },
+   {
+    "k": "fset",
+    "l": "Final Settlement",
+    "f": [],
+    "ic": "📑",
+    "c": "fsv",
+    "pre": "FS"
+   },
+   {
+    "k": "padj",
+    "l": "Provision Adjustments",
+    "f": [
+     "Employee:ref:employees",
+     "Type:sel:Leave|EOSB|Benefits",
+     "Direction:sel:Increase|Decrease",
+     "Reason",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "PA",
+    "tx": 1,
+    "ic": "🛠️",
+    "hook": "[fn]"
+   },
+   {
+    "k": "prv",
+    "l": "Provision Schedules",
+    "f": [],
+    "ic": "🏦",
+    "c": "prvv"
+   },
+   {
+    "k": "psl",
+    "l": "Provision Subledger",
+    "f": [],
+    "ic": "📒",
+    "c": "pslv"
+   },
+   {
+    "k": "smr",
+    "l": "Salary Modification Reports",
+    "f": [],
+    "ic": "🗂️",
+    "c": "smrv"
+   },
+   {
+    "k": "ecs",
+    "l": "Employee Control Statement",
+    "f": [],
+    "ic": "📘",
+    "c": "ecsv"
+   },
+   {
+    "k": "ecr",
+    "l": "Employee Comprehensive Report",
+    "f": [],
+    "ic": "🪪",
+    "c": "ecrv"
+   },
+   {
+    "k": "rpts",
+    "l": "Payroll Reports",
+    "f": [],
+    "ic": "🖨️",
+    "c": "rpts"
+   },
+   {
+    "k": "hlt",
+    "l": "Template Master",
+    "f": [],
+    "ic": "🧩",
+    "c": "hltm"
+   },
+   {
+    "k": "hlc",
+    "l": "Letter Categories",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🗂️",
+    "ac": "LC",
+    "c": "hlcv"
+   },
+   {
+    "k": "hlr",
+    "l": "Letter Requests",
+    "f": [],
+    "ic": "✉️",
+    "c": "hlrv",
+    "pre": "LTR",
+    "yr": 1
+   },
+   {
+    "k": "hlex",
+    "l": "Document Expiry Tracker",
+    "f": [],
+    "ic": "🛂",
+    "c": "hlexv"
+   },
+   {
+    "k": "hlrg",
+    "l": "Letters Generated Register",
+    "f": [],
+    "ic": "📜",
+    "c": "hlrgv"
+   },
+   {
+    "k": "hlxr",
+    "l": "Expiring Documents Report",
+    "f": [],
+    "ic": "⏰",
+    "c": "hlxrv"
+   },
+   {
+    "k": "hlpa",
+    "l": "Pending Approvals Report",
+    "f": [],
+    "ic": "⏳",
+    "c": "hlpav"
+   },
+   {
+    "k": "pfk",
+    "l": "Competency Master",
+    "f": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Category:sel:Leadership|Technical|Behavioral|Core Values",
+     "Description",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧠",
+    "ac": "CP",
+    "c": "pfkv",
+    "show": [
+     "Code",
+     "Name",
+     "Arabic Name",
+     "Category",
+     "Status"
+    ]
+   },
+   {
+    "k": "pfc",
+    "l": "Appraisal Cycles",
+    "f": [],
+    "ic": "🔄",
+    "c": "pfcv"
+   },
+   {
+    "k": "pfb",
+    "l": "Bonus Policy",
+    "f": [
+     "Policy",
+     "Tier",
+     "Min Score %:num",
+     "Max Score %:num",
+     "Bonus Type:sel:Percentage of Basic|Percentage of Gross|Fixed Amount",
+     "Bonus Value:num",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🎁",
+    "c": "pfbv",
+    "hook": "[fn]",
+    "show": [
+     "Policy",
+     "Tier",
+     "Min Score %",
+     "Max Score %",
+     "Bonus Type",
+     "Bonus Value",
+     "Status"
+    ]
+   },
+   {
+    "k": "pfs",
+    "l": "Appraisal Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "pfsv"
+   },
+   {
+    "k": "pfg",
+    "l": "Goals",
+    "f": [],
+    "ic": "🎯",
+    "c": "pfgv",
+    "pre": "GOL",
+    "yr": 1
+   },
+   {
+    "k": "pfa",
+    "l": "Appraisals",
+    "f": [],
+    "ic": "📝",
+    "c": "pfav",
+    "pre": "APR",
+    "yr": 1
+   },
+   {
+    "k": "pfl",
+    "l": "Calibration",
+    "f": [],
+    "ic": "⚖️",
+    "c": "pflv"
+   },
+   {
+    "k": "pfp",
+    "l": "Improvement Plans",
+    "f": [],
+    "ic": "🩹",
+    "c": "pfpv",
+    "pre": "PIP",
+    "yr": 1
+   },
+   {
+    "k": "pfo",
+    "l": "Bonus Payout",
+    "f": [],
+    "ic": "🎁",
+    "c": "pfov"
+   },
+   {
+    "k": "pfr1",
+    "l": "Appraisal Register",
+    "f": [],
+    "ic": "📜",
+    "c": "pfr1v"
+   },
+   {
+    "k": "pfr2",
+    "l": "Score Distribution",
+    "f": [],
+    "ic": "🔔",
+    "c": "pfr2v"
+   },
+   {
+    "k": "pfr3",
+    "l": "Goal Achievement",
+    "f": [],
+    "ic": "🏁",
+    "c": "pfr3v"
+   },
+   {
+    "k": "pfr4",
+    "l": "Calibration Report",
+    "f": [],
+    "ic": "📐",
+    "c": "pfr4v"
+   },
+   {
+    "k": "pfr5",
+    "l": "Bonus Calculation",
+    "f": [],
+    "ic": "🧮",
+    "c": "pfr5v"
+   },
+   {
+    "k": "rnt",
+    "l": "Onboarding Templates",
+    "f": [],
+    "ic": "🧩",
+    "c": "rntv"
+   },
+   {
+    "k": "rns",
+    "l": "Recruitment Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "rnsv"
+   },
+   {
+    "k": "rnq",
+    "l": "Job Requisitions",
+    "f": [],
+    "ic": "🧑‍💼",
+    "c": "rnqv",
+    "pre": "REQ",
+    "yr": 1
+   },
+   {
+    "k": "rnc",
+    "l": "Candidates",
+    "f": [],
+    "ic": "👤",
+    "c": "rncv",
+    "pre": "CND",
+    "yr": 1
+   },
+   {
+    "k": "rno",
+    "l": "Offers",
+    "f": [],
+    "ic": "📨",
+    "c": "rnov",
+    "pre": "OFR",
+    "yr": 1
+   },
+   {
+    "k": "rnb",
+    "l": "New Hire Onboarding",
+    "f": [],
+    "ic": "🚀",
+    "c": "rnbv",
+    "pre": "ONB",
+    "yr": 1
+   },
+   {
+    "k": "rnk",
+    "l": "Onboarding Tasks by Role",
+    "f": [],
+    "ic": "✅",
+    "c": "rnkv"
+   },
+   {
+    "k": "rnr1",
+    "l": "Requisition Register",
+    "f": [],
+    "ic": "📜",
+    "c": "rnr1v"
+   },
+   {
+    "k": "rnr2",
+    "l": "Recruitment Pipeline",
+    "f": [],
+    "ic": "🔻",
+    "c": "rnr2v"
+   },
+   {
+    "k": "rnr3",
+    "l": "Time to Hire and Offers",
+    "f": [],
+    "ic": "⏱️",
+    "c": "rnr3v"
+   },
+   {
+    "k": "rnr4",
+    "l": "Onboarding Status",
+    "f": [],
+    "ic": "📋",
+    "c": "rnr4v"
+   },
+   {
+    "k": "rnr5",
+    "l": "New Hire Document Compliance",
+    "f": [],
+    "ic": "🛂",
+    "c": "rnr5v"
+   },
+   {
+    "k": "rwd",
+    "l": "Renewals & Clearance",
+    "f": [],
+    "ic": "🚦",
+    "c": "rwDbv"
+   },
+   {
+    "k": "vmr",
+    "l": "Vehicle & Machinery Renewals",
+    "f": [],
+    "ic": "🚚",
+    "c": "rwVmv"
+   },
+   {
+    "k": "edr",
+    "l": "Employee Document Renewals",
+    "f": [],
+    "ic": "🪪",
+    "c": "rwEdv"
+   },
+   {
+    "k": "ipm",
+    "l": "Issued Permits",
+    "f": [],
+    "ic": "🎫",
+    "c": "rwPmv",
+    "pre": "PRM",
+    "yr": 1
+   },
+   {
+    "k": "exn",
+    "l": "Exit Notices",
+    "f": [],
+    "ic": "🚪",
+    "c": "rwExv",
+    "pre": "EXN",
+    "yr": 1
+   },
+   {
+    "k": "pcl",
+    "l": "Petty Cash Clearance",
+    "f": [],
+    "ic": "👛",
+    "c": "rwPcv",
+    "pre": "PCL",
+    "yr": 1
+   },
+   {
+    "k": "rws",
+    "l": "Renewal Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "rwSv"
+   },
+   {
+    "k": "rwr1",
+    "l": "Document Renewals Register",
+    "f": [],
+    "ic": "🗂️",
+    "c": "rwr1v"
+   },
+   {
+    "k": "rwr2",
+    "l": "Renewals and Clearance Activity Log",
+    "f": [],
+    "ic": "🕘",
+    "c": "rwr2v"
+   },
+   {
+    "k": "rwr3",
+    "l": "Issued Permits Register",
+    "f": [],
+    "ic": "🎫",
+    "c": "rwr3v"
+   },
+   {
+    "k": "rwr4",
+    "l": "Petty Cash Clearance Status",
+    "f": [],
+    "ic": "👛",
+    "c": "rwr4v"
+   }
+  ]
+ },
+ {
+  "id": "legal",
+  "n": "Legal & Generals",
+  "d": "Company certificates, licenses and legal documents",
+  "s": [
+   {
+    "k": "cct",
+    "l": "Certificate Types",
+    "f": [],
+    "ic": "🧩",
+    "c": "cctv"
+   },
+   {
+    "k": "ccs",
+    "l": "Certificate Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "ccsv"
+   },
+   {
+    "k": "ccg",
+    "l": "Company Certificates",
+    "f": [],
+    "ic": "🏛️",
+    "c": "ccgv",
+    "pre": "CRT",
+    "yr": 1
+   },
+   {
+    "k": "ccd",
+    "l": "Compliance Status",
+    "f": [],
+    "ic": "🚦",
+    "c": "ccdv"
+   },
+   {
+    "k": "ccr1",
+    "l": "Certificate Register",
+    "f": [],
+    "ic": "🗂️",
+    "c": "ccr1v"
+   },
+   {
+    "k": "ccr2",
+    "l": "Certificate Expiry Forecast",
+    "f": [],
+    "ic": "📅",
+    "c": "ccr2v"
+   },
+   {
+    "k": "ccr3",
+    "l": "Certificate Activity Log",
+    "f": [],
+    "ic": "🕘",
+    "c": "ccr3v"
+   },
+   {
+    "k": "mdc",
+    "l": "CEO & BOD Dashboard",
+    "f": [],
+    "ic": "🧭",
+    "c": "mdcV"
+   }
+  ]
+ },
+ {
+  "id": "fi",
+  "n": "Finance",
+  "d": "GL, AP, AR, banking",
+  "s": [
+   {
+    "k": "jv",
+    "l": "Journal Vouchers",
+    "f": [
+     "Type:sel:General|Accrual|Prepayment|Provision|Payroll|Depreciation|Intercompany",
+     "Debit Account:ref:coa",
+     "Credit Account:ref:coa",
+     "Narration",
+     "Supplier:ref:suppliers",
+     "Customer:ref:customers",
+     "Asset Code",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "JV",
+    "tx": 1,
+    "show": [
+     "Type",
+     "Debit Account",
+     "Credit Account",
+     "Narration",
+     "Date",
+     "Status"
+    ]
+   },
+   {
+    "k": "pv",
+    "l": "Supplier Payments",
+    "f": [
+     "Supplier:ref:suppliers",
+     "Payment Type:sel:Bill Settlement|Advance|On Account",
+     "Method:sel:Cash|Bank Transfer|Cheque",
+     "Bank",
+     "Reference",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "PV",
+    "tx": 1
+   },
+   {
+    "k": "gpv",
+    "l": "General Payment Vouchers",
+    "f": [
+     "Counterparty",
+     "Method",
+     "Reference",
+     "Narration",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "GPV",
+    "tx": 1,
+    "ic": "💳",
+    "yr": 1,
+    "c": "gpvv",
+    "cnt": 1
+   },
+   {
+    "k": "grv",
+    "l": "General Receipt Vouchers",
+    "f": [
+     "Counterparty",
+     "Method",
+     "Reference",
+     "Narration",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "GRV",
+    "tx": 1,
+    "ic": "🧾",
+    "yr": 1,
+    "c": "grvv",
+    "cnt": 1
+   },
+   {
+    "k": "gvc",
+    "l": "Voucher Control",
+    "f": [],
+    "ic": "🛂",
+    "c": "gvcv"
+   },
+   {
+    "k": "gvrep",
+    "l": "Voucher Reports",
+    "f": [],
+    "ic": "📑",
+    "c": "gvrv"
+   },
+   {
+    "k": "bt",
+    "l": "Bank Transfers",
+    "f": [
+     "From Bank:ref:banks",
+     "To Bank:ref:banks",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "BTR",
+    "tx": 1,
+    "ic": "🔄",
+    "c": "bxv",
+    "cnt": 1
+   },
+   {
+    "k": "bstmt",
+    "l": "Bank Statement Lines",
+    "f": [
+     "Bank:ref:banks",
+     "Date:date",
+     "Reference",
+     "Type:sel:Deposit|Withdrawal",
+     "Amount:num"
+    ],
+    "ic": "🧾",
+    "c": "bkBsv"
+   },
+   {
+    "k": "bankrec",
+    "l": "Bank Reconciliation",
+    "f": [],
+    "ic": "🔍",
+    "c": "brec"
+   },
+   {
+    "k": "brh",
+    "l": "Reconciliation History",
+    "f": [],
+    "ic": "🗄️",
+    "c": "bkHv"
+   },
+   {
+    "k": "brs",
+    "l": "Bank Reconciliation Settings",
+    "f": [],
+    "ic": "⚙️",
+    "c": "bkSv"
+   },
+   {
+    "k": "brr1",
+    "l": "Bank Reconciliation Statement",
+    "f": [],
+    "ic": "🔍",
+    "c": "bkRp1"
+   },
+   {
+    "k": "brr2",
+    "l": "Uncleared Items",
+    "f": [],
+    "ic": "⏳",
+    "c": "bkRp2"
+   },
+   {
+    "k": "brr3",
+    "l": "Reconciliation Status",
+    "f": [],
+    "ic": "✅",
+    "c": "bkRp3"
+   },
+   {
+    "k": "lc",
+    "l": "LC Management",
+    "f": [],
+    "ic": "📜",
+    "c": "lcv",
+    "pre": "LC"
+   },
+   {
+    "k": "lg",
+    "l": "LG Management",
+    "f": [],
+    "ic": "🛡️",
+    "c": "lgv",
+    "pre": "LG"
+   },
+   {
+    "k": "pdcm",
+    "l": "PDC Management",
+    "f": [],
+    "ic": "🎫",
+    "c": "pdmv"
+   },
+   {
+    "k": "odf",
+    "l": "Overdraft Facility",
+    "f": [],
+    "ic": "🏧",
+    "c": "odfv",
+    "pre": "OD"
+   },
+   {
+    "k": "bln",
+    "l": "Loan Management",
+    "f": [],
+    "ic": "🏛️",
+    "c": "blnv",
+    "pre": "LN"
+   },
+   {
+    "k": "tdp",
+    "l": "Fixed Deposits",
+    "f": [],
+    "ic": "🔒",
+    "c": "tdpv",
+    "pre": "FD"
+   },
+   {
+    "k": "bpos",
+    "l": "Bank Position",
+    "f": [],
+    "ic": "📊",
+    "c": "bposv"
+   },
+   {
+    "k": "lease",
+    "l": "Lease Management",
+    "f": [],
+    "ic": "🏢",
+    "c": "lsmv",
+    "pre": "LSE",
+    "yr": 1
+   },
+   {
+    "k": "leaser",
+    "l": "Lease Reports",
+    "f": [],
+    "ic": "📑",
+    "c": "lsmrv"
+   },
+   {
+    "k": "prepay",
+    "l": "Prepayments",
+    "f": [],
+    "ic": "🗓️",
+    "c": "ppmv",
+    "pre": "PP",
+    "yr": 1
+   },
+   {
+    "k": "prepayr",
+    "l": "Prepayment Reports",
+    "f": [],
+    "ic": "📑",
+    "c": "ppmrv"
+   },
+   {
+    "k": "fstm",
+    "l": "Financial Statements",
+    "f": [],
+    "ic": "📈",
+    "c": "fstm"
+   },
+   {
+    "k": "petty",
+    "l": "Petty Cash",
+    "f": [
+     "Holder",
+     "Payee",
+     "Cost Category",
+     "Invoice No",
+     "TRN",
+     "Payment Method:sel:Cash|Card",
+     "Narration",
+     "Total:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "PC",
+    "tx": 1,
+    "show": [
+     "Holder",
+     "Narration",
+     "Payee",
+     "Date",
+     "Amount",
+     "Status"
+    ]
+   },
+   {
+    "k": "accr",
+    "l": "Accruals",
+    "f": [
+     "Type:sel:Accrual|Prepayment",
+     "Description",
+     "Expense Account:ref:coa",
+     "Accrued / Prepaid Account:ref:coa",
+     "Credit Account (prepayment):ref:coa",
+     "Months (prepayment):num",
+     "Reversal Date (accrual):date",
+     "Activity:ref:wbs",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "ACC",
+    "tx": 1,
+    "ic": "🧮",
+    "c": "acv",
+    "cnt": 1
+   },
+   {
+    "k": "prov",
+    "l": "Provisions",
+    "f": [
+     "Type:sel:Leave|EOSB|Other",
+     "Opening:num",
+     "Closing:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "PRV",
+    "tx": 1,
+    "ic": "🏦",
+    "c": "pvv",
+    "cnt": 1
+   },
+   {
+    "k": "ic",
+    "l": "Intercompany",
+    "f": [
+     "Counterparty",
+     "Service Type",
+     "Mark-up %:num",
+     "Date:date",
+     "Project:ref:projects",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Amount:num",
+     "VAT %:num",
+     "Status:sel:Draft|Submitted|Approved|Rejected|Closed|Cancelled"
+    ],
+    "pre": "IC",
+    "tx": 1
+   },
+   {
+    "k": "icr",
+    "l": "Payroll Recharge",
+    "f": [],
+    "ic": "🔁",
+    "c": "icr"
+   },
+   {
+    "k": "accmap",
+    "l": "Account Mapping",
+    "f": [
+     "Key:sel:Inventory/Expense|GRN Payable|Input VAT|Output VAT|Accounts Payable|Accounts Receivable|Revenue|Bank / Cash|Fixed Assets|Accumulated Depreciation|Depreciation Expense|Disposal Gain/Loss|Project Cost / COGS|Employee Loans|FX Gain/Loss|Supplier Advances|Customer Advances|Retained Earnings|EOSB Provision|Employee Clearing",
+     "Account:ref:coa"
+    ],
+    "ic": "🔗"
+   },
+   {
+    "k": "gl",
+    "l": "General Ledger",
+    "f": [
+     "Journal No",
+     "Date:date",
+     "Source",
+     "Doc No",
+     "Account",
+     "Debit:num",
+     "Credit:num",
+     "Project",
+     "Company"
+    ],
+    "ic": "📚",
+    "ro": 1
+   },
+   {
+    "k": "tb",
+    "l": "Trial Balance",
+    "f": [],
+    "ic": "⚖️",
+    "ro": 1
+   },
+   {
+    "k": "bud",
+    "l": "Budget Entry",
+    "f": [
+     "Year:num",
+     "Month:sel:Annual|1|2|3|4|5|6|7|8|9|10|11|12",
+     "Account:ref:coa",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Project:ref:projects",
+     "Amount:num",
+     "Note"
+    ],
+    "ic": "🎯",
+    "c": "bdgv"
+   },
+   {
+    "k": "bva",
+    "l": "Budget vs Actual",
+    "f": [],
+    "ic": "📊",
+    "c": "bva"
+   },
+   {
+    "k": "bdgr",
+    "l": "Budget Reports",
+    "f": [],
+    "ic": "📑",
+    "c": "bdgrv"
+   },
+   {
+    "k": "icv",
+    "l": "ICV Management",
+    "f": [],
+    "ic": "🏅",
+    "c": "icvv"
+   },
+   {
+    "k": "vatr",
+    "l": "VAT Return",
+    "f": [],
+    "ic": "🧮",
+    "c": "vatr"
+   },
+   {
+    "k": "ctax",
+    "l": "Corporate Tax",
+    "f": [],
+    "ic": "🏛️",
+    "c": "ctax"
+   },
+   {
+    "k": "ctr",
+    "l": "CT Returns",
+    "f": [],
+    "ic": "🧾",
+    "c": "ctrv",
+    "hide": 1
+   },
+   {
+    "k": "ctj",
+    "l": "CT Entries",
+    "f": [],
+    "ic": "💼",
+    "c": "ctjv",
+    "hide": 1,
+    "pre": "CTJ",
+    "yr": 1
+   },
+   {
+    "k": "fxr",
+    "l": "Exchange Rates",
+    "f": [
+     "Currency:ref:currencies",
+     "Date:date",
+     "Rate:num"
+    ],
+    "ic": "💱",
+    "hook": "[fn]"
+   },
+   {
+    "k": "fxrev",
+    "l": "FX Revaluation",
+    "f": [],
+    "ic": "🔄",
+    "c": "fxrev"
+   },
+   {
+    "k": "antpl",
+    "l": "Analysis Templates",
+    "f": [],
+    "ic": "🧩",
+    "c": "antplv"
+   },
+   {
+    "k": "anrep",
+    "l": "Analysis Reports",
+    "f": [],
+    "ic": "🔬",
+    "c": "anrep"
+   },
+   {
+    "k": "soa",
+    "l": "Party SOA",
+    "f": [],
+    "ic": "📒",
+    "c": "soav"
+   },
+   {
+    "k": "aging",
+    "l": "AP / AR Aging",
+    "f": [],
+    "ic": "⏳",
+    "c": "agingv"
+   },
+   {
+    "k": "grnp",
+    "l": "GRN Payables Report",
+    "f": [],
+    "ic": "🧾",
+    "c": "grnpv"
+   },
+   {
+    "k": "regs",
+    "l": "Reports & Registers",
+    "f": [],
+    "ic": "📚",
+    "c": "regsv"
+   },
+   {
+    "k": "periods",
+    "l": "Period Control",
+    "f": [
+     "Period",
+     "Status:sel:Open|Soft close|Hard close|Locked"
+    ],
+    "ic": "🔒",
+    "hook": "[fn]"
+   },
+   {
+    "k": "plk",
+    "l": "Period Lock",
+    "f": [],
+    "ic": "🔐",
+    "c": "plkv"
+   },
+   {
+    "k": "gld",
+    "l": "GL Dump",
+    "f": [],
+    "ic": "🗃️",
+    "c": "gldv"
+   }
+  ]
+ },
+ {
+  "id": "rp",
+  "n": "Reports",
+  "d": "Financial, payroll, project, stock and asset reports in one place",
+  "s": [
+   {
+    "k": "r1",
+    "l": "Financial Statements",
+    "f": [],
+    "ic": "📈",
+    "to": "/fi/fstm"
+   },
+   {
+    "k": "r2",
+    "l": "Trial Balance",
+    "f": [],
+    "ic": "⚖️",
+    "to": "/fi/tb"
+   },
+   {
+    "k": "r3",
+    "l": "General Ledger",
+    "f": [],
+    "ic": "📚",
+    "to": "/fi/gl"
+   },
+   {
+    "k": "r64",
+    "l": "GL Dump",
+    "f": [],
+    "ic": "🗃️",
+    "to": "/fi/gld"
+   },
+   {
+    "k": "r65",
+    "l": "Project Comprehensive Report",
+    "f": [],
+    "ic": "🏗️",
+    "to": "/pj/crp"
+   },
+   {
+    "k": "r66",
+    "l": "Asset Comprehensive Report",
+    "f": [],
+    "ic": "📋",
+    "to": "/fa/cra"
+   },
+   {
+    "k": "r67",
+    "l": "Item Comprehensive Report",
+    "f": [],
+    "ic": "📦",
+    "to": "/in/cri"
+   },
+   {
+    "k": "r68",
+    "l": "Customer Comprehensive Report",
+    "f": [],
+    "ic": "🤝",
+    "to": "/sa/crc"
+   },
+   {
+    "k": "r69",
+    "l": "Supplier Comprehensive Report",
+    "f": [],
+    "ic": "🏭",
+    "to": "/pu/crs"
+   },
+   {
+    "k": "r70",
+    "l": "CEO & BOD Dashboard",
+    "f": [],
+    "ic": "🧭",
+    "to": "/legal/mdc"
+   },
+   {
+    "k": "r4",
+    "l": "Bank Reconciliation",
+    "f": [],
+    "ic": "🔍",
+    "to": "/fi/bankrec"
+   },
+   {
+    "k": "r5",
+    "l": "Payroll Reports",
+    "f": [],
+    "ic": "🖨️",
+    "to": "/hr/rpts"
+   },
+   {
+    "k": "r6",
+    "l": "Payroll Dashboard",
+    "f": [],
+    "ic": "📈",
+    "to": "/hr/pdash"
+   },
+   {
+    "k": "r7",
+    "l": "Provision Schedules",
+    "f": [],
+    "ic": "🏦",
+    "to": "/hr/prv"
+   },
+   {
+    "k": "r8",
+    "l": "Final Settlements",
+    "f": [],
+    "ic": "📑",
+    "to": "/hr/fset"
+   },
+   {
+    "k": "r9",
+    "l": "Project Cost Control",
+    "f": [],
+    "ic": "📊",
+    "to": "/pj/pcc"
+   },
+   {
+    "k": "r10",
+    "l": "Stock Ledger & Valuation",
+    "f": [],
+    "ic": "📦",
+    "to": "/in/stkv"
+   },
+   {
+    "k": "r11",
+    "l": "Asset Register & Depreciation",
+    "f": [],
+    "ic": "📉",
+    "to": "/fa/dep"
+   },
+   {
+    "k": "r12",
+    "l": "3-Way Match",
+    "f": [],
+    "ic": "🔗",
+    "to": "/pu/match"
+   },
+   {
+    "k": "r13",
+    "l": "Intercompany Recharge",
+    "f": [],
+    "ic": "🔁",
+    "to": "/fi/icr"
+   },
+   {
+    "k": "r14",
+    "l": "Audit Trail",
+    "f": [],
+    "ic": "📝",
+    "to": "/sy/audit"
+   },
+   {
+    "k": "r15",
+    "l": "Budget vs Actual",
+    "f": [],
+    "ic": "📊",
+    "to": "/fi/bva"
+   },
+   {
+    "k": "r16",
+    "l": "VAT Return",
+    "f": [],
+    "ic": "🧮",
+    "to": "/fi/vatr"
+   },
+   {
+    "k": "r17",
+    "l": "Corporate Tax",
+    "f": [],
+    "ic": "🏛️",
+    "to": "/fi/ctax"
+   },
+   {
+    "k": "r18",
+    "l": "Loan Balances",
+    "f": [],
+    "ic": "📒",
+    "to": "/hr/loanr"
+   },
+   {
+    "k": "r19",
+    "l": "Leave Balance",
+    "f": [],
+    "ic": "🏖️",
+    "to": "/hr/lbal"
+   },
+   {
+    "k": "r20",
+    "l": "FX Revaluation",
+    "f": [],
+    "ic": "🔄",
+    "to": "/fi/fxrev"
+   },
+   {
+    "k": "r26",
+    "l": "Employee Reports",
+    "f": [],
+    "ic": "📋",
+    "to": "/md/empr"
+   },
+   {
+    "k": "r27",
+    "l": "Analysis Reports",
+    "f": [],
+    "ic": "🔬",
+    "to": "/fi/anrep"
+   },
+   {
+    "k": "r28",
+    "l": "Asset Documents Status",
+    "f": [],
+    "ic": "📑",
+    "to": "/fa/adocs"
+   },
+   {
+    "k": "r29",
+    "l": "Job Cost vs Budget",
+    "f": [],
+    "ic": "📑",
+    "to": "/pj/jcb"
+   },
+   {
+    "k": "r30",
+    "l": "Asset Register Report",
+    "f": [],
+    "ic": "🏗️",
+    "to": "/fa/areg"
+   },
+   {
+    "k": "r31",
+    "l": "Employee Control Statement",
+    "f": [],
+    "ic": "📘",
+    "to": "/hr/ecs"
+   },
+   {
+    "k": "r32",
+    "l": "Letters Generated Register",
+    "f": [],
+    "ic": "📜",
+    "to": "/hr/hlrg"
+   },
+   {
+    "k": "r33",
+    "l": "Expiring Documents Report",
+    "f": [],
+    "ic": "⏰",
+    "to": "/hr/hlxr"
+   },
+   {
+    "k": "r34",
+    "l": "Pending Approvals Report",
+    "f": [],
+    "ic": "⏳",
+    "to": "/hr/hlpa"
+   },
+   {
+    "k": "r35",
+    "l": "Appraisal Register",
+    "f": [],
+    "ic": "📜",
+    "to": "/hr/pfr1"
+   },
+   {
+    "k": "r36",
+    "l": "Score Distribution",
+    "f": [],
+    "ic": "🔔",
+    "to": "/hr/pfr2"
+   },
+   {
+    "k": "r37",
+    "l": "Goal Achievement",
+    "f": [],
+    "ic": "🏁",
+    "to": "/hr/pfr3"
+   },
+   {
+    "k": "r38",
+    "l": "Calibration Report",
+    "f": [],
+    "ic": "📐",
+    "to": "/hr/pfr4"
+   },
+   {
+    "k": "r39",
+    "l": "Bonus Calculation",
+    "f": [],
+    "ic": "🧮",
+    "to": "/hr/pfr5"
+   },
+   {
+    "k": "r40",
+    "l": "Requisition Register",
+    "f": [],
+    "ic": "📜",
+    "to": "/hr/rnr1"
+   },
+   {
+    "k": "r41",
+    "l": "Recruitment Pipeline",
+    "f": [],
+    "ic": "🔻",
+    "to": "/hr/rnr2"
+   },
+   {
+    "k": "r42",
+    "l": "Time to Hire and Offers",
+    "f": [],
+    "ic": "⏱️",
+    "to": "/hr/rnr3"
+   },
+   {
+    "k": "r43",
+    "l": "Onboarding Status",
+    "f": [],
+    "ic": "📋",
+    "to": "/hr/rnr4"
+   },
+   {
+    "k": "r44",
+    "l": "New Hire Document Compliance",
+    "f": [],
+    "ic": "🛂",
+    "to": "/hr/rnr5"
+   },
+   {
+    "k": "r45",
+    "l": "Certificate Register",
+    "f": [],
+    "ic": "🗂️",
+    "to": "/legal/ccr1"
+   },
+   {
+    "k": "r46",
+    "l": "Certificate Expiry Forecast",
+    "f": [],
+    "ic": "📅",
+    "to": "/legal/ccr2"
+   },
+   {
+    "k": "r47",
+    "l": "Certificate Activity Log",
+    "f": [],
+    "ic": "🕘",
+    "to": "/legal/ccr3"
+   },
+   {
+    "k": "r48",
+    "l": "Document Renewals Register",
+    "f": [],
+    "ic": "🗂️",
+    "to": "/hr/rwr1"
+   },
+   {
+    "k": "r49",
+    "l": "Renewals and Clearance Activity Log",
+    "f": [],
+    "ic": "🕘",
+    "to": "/hr/rwr2"
+   },
+   {
+    "k": "r50",
+    "l": "Issued Permits Register",
+    "f": [],
+    "ic": "🎫",
+    "to": "/hr/rwr3"
+   },
+   {
+    "k": "r51",
+    "l": "Petty Cash Clearance Status",
+    "f": [],
+    "ic": "👛",
+    "to": "/hr/rwr4"
+   },
+   {
+    "k": "r63",
+    "l": "Employee Comprehensive Report",
+    "f": [],
+    "ic": "🪪",
+    "to": "/hr/ecr"
+   },
+   {
+    "k": "r52",
+    "l": "Bank Reconciliation Statement",
+    "f": [],
+    "ic": "🔍",
+    "to": "/fi/brr1"
+   },
+   {
+    "k": "r53",
+    "l": "Uncleared Items",
+    "f": [],
+    "ic": "⏳",
+    "to": "/fi/brr2"
+   },
+   {
+    "k": "r54",
+    "l": "Reconciliation Status",
+    "f": [],
+    "ic": "✅",
+    "to": "/fi/brr3"
+   },
+   {
+    "k": "r21",
+    "l": "Party SOA",
+    "f": [],
+    "ic": "📒",
+    "to": "/fi/soa"
+   },
+   {
+    "k": "r22",
+    "l": "AP / AR Aging",
+    "f": [],
+    "ic": "⏳",
+    "to": "/fi/aging"
+   },
+   {
+    "k": "r23",
+    "l": "GRN Payables Report",
+    "f": [],
+    "ic": "🧾",
+    "to": "/fi/grnp"
+   },
+   {
+    "k": "r24",
+    "l": "Reports & Registers",
+    "f": [],
+    "ic": "📚",
+    "to": "/fi/regs"
+   },
+   {
+    "k": "r25",
+    "l": "Bid Tabulation",
+    "f": [],
+    "ic": "⚖️",
+    "to": "/pu/bids"
+   }
+  ]
+ },
+ {
+  "id": "sy",
+  "n": "Users & Settings",
+  "d": "Security, approvals, configuration",
+  "s": [
+   {
+    "k": "dfacc",
+    "l": "Default Posting Accounts",
+    "f": [],
+    "ic": "🔗",
+    "to": "/fi/accmap"
+   },
+   {
+    "k": "users",
+    "l": "Users",
+    "f": [
+     "Username",
+     "Name",
+     "Role:ref:roles",
+     "Extra Roles",
+     "Company",
+     "Allowed Companies",
+     "Access Until:date",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧑"
+   },
+   {
+    "k": "roles",
+    "l": "Roles",
+    "f": [
+     "Name",
+     "Permissions"
+    ],
+    "ic": "🛡️"
+   },
+   {
+    "k": "uacc",
+    "l": "Login & Security",
+    "f": [],
+    "ic": "🔐",
+    "c": "uacc"
+   },
+   {
+    "k": "rperm",
+    "l": "Role Permissions",
+    "f": [],
+    "ic": "🧩",
+    "c": "rperm"
+   },
+   {
+    "k": "bkp",
+    "l": "Backup Management",
+    "f": [],
+    "ic": "💾",
+    "c": "bkpv"
+   },
+   {
+    "k": "emset",
+    "l": "Email Settings",
+    "f": [],
+    "ic": "📧",
+    "c": "emsv"
+   },
+   {
+    "k": "emlog",
+    "l": "Email Log",
+    "f": [],
+    "ic": "📨",
+    "c": "emlogv"
+   },
+   {
+    "k": "numset",
+    "l": "Document Numbering",
+    "f": [],
+    "ic": "🔢",
+    "c": "numset"
+   },
+   {
+    "k": "appr",
+    "l": "Approval Rules",
+    "f": [
+     "Transaction Type",
+     "From Amount:num",
+     "To Amount:num",
+     "Approver Role:ref:roles"
+    ],
+    "ic": "✅"
+   },
+   {
+    "k": "eclset",
+    "l": "Credit Loss Rates (ECL)",
+    "f": [],
+    "ic": "📉",
+    "c": "eclsv"
+   },
+   {
+    "k": "rules",
+    "l": "Legal & Policy Rules",
+    "f": [
+     "Rule Code",
+     "Name",
+     "Source:sel:UAE statutory|Company policy|Management|Accounting estimate",
+     "Effective From:date",
+     "Effective To:date",
+     "Method"
+    ],
+    "ic": "⚖️"
+   },
+   {
+    "k": "company",
+    "l": "Company Settings",
+    "f": [
+     "Name",
+     "Arabic Name",
+     "TRN",
+     "Address",
+     "Emirate:sel:|Abu Dhabi|Dubai|Sharjah|Ajman|Umm Al Quwain|Ras Al Khaimah|Fujairah",
+     "Phone",
+     "Email",
+     "Website",
+     "Currency",
+     "MOL Establishment ID"
+    ],
+    "ic": "🏢"
+   },
+   {
+    "k": "audit",
+    "l": "Audit Trail",
+    "f": [
+     "Time",
+     "Module",
+     "Action",
+     "Record"
+    ],
+    "ic": "📝",
+    "ro": 1
+   }
+  ]
+ },
+ {
+  "id": "mf",
+  "n": "Manufacturing",
+  "d": "",
+  "s": [
+   {
+    "k": "mfdash",
+    "l": "Manufacturing Dashboard",
+    "f": [],
+    "ic": "📊",
+    "c": "mfDashV"
+   },
+   {
+    "k": "mfpm",
+    "l": "Product Engineering",
+    "f": [
+     "Code",
+     "Name",
+     "Item:ref:items",
+     "Product Family:sel:Chiller control panel|AHU / FCU control panel|Cooling tower panel|Pump and VFD panel|Fan and ventilation panel|VRF / split system panel|BMS / DDC panel|MCC / power panel|Other",
+     "Rated Voltage (V):num",
+     "Phase:sel:3|1",
+     "Frequency (Hz):num",
+     "Rated Current (A):num",
+     "Short-circuit Rating (kA):num",
+     "IP Rating",
+     "Enclosure Material",
+     "Form of Separation",
+     "Controller Type",
+     "Applicable Standard",
+     "Drawing No",
+     "Drawing Revision",
+     "Datasheet Ref",
+     "Certification",
+     "Default BOM:ref:mfbom",
+     "Default Routing:ref:mfrt",
+     "Default Quality Plan:ref:mfqp",
+     "Warranty (months):num",
+     "Status:sel:Active|Under development|Obsolete",
+     "Remarks"
+    ],
+    "ic": "🧬",
+    "ac": "PM",
+    "show": [
+     "Code",
+     "Name",
+     "Item",
+     "Product Family",
+     "Rated Current (A)",
+     "IP Rating",
+     "Default BOM",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfspec",
+    "l": "Item & Technical Specs",
+    "f": [
+     "Item:ref:items",
+     "Specification Type:sel:Component|Sub-assembly|Raw material|Enclosure|Controller|Consumable",
+     "Manufacturer",
+     "Manufacturer Part No",
+     "Rating / Size",
+     "Voltage (V)",
+     "Current (A)",
+     "Breaking Capacity (kA)",
+     "Poles",
+     "Colour / Finish",
+     "Standard / Certification",
+     "Datasheet Ref",
+     "Approved Suppliers",
+     "Tracking:sel:None|Lot|Serial",
+     "Critical Component:sel:No|Yes",
+     "Incoming Inspection:sel:No|Yes",
+     "Shelf Life (months):num",
+     "Storage Conditions",
+     "Status:sel:Active|Inactive",
+     "Remarks"
+    ],
+    "ic": "📐",
+    "show": [
+     "Item",
+     "Specification Type",
+     "Manufacturer",
+     "Manufacturer Part No",
+     "Rating / Size",
+     "Tracking",
+     "Critical Component",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfoc",
+    "l": "Option Classes",
+    "f": [
+     "Code",
+     "Name",
+     "Options",
+     "Default Option",
+     "Required:sel:Yes|No",
+     "Remarks"
+    ],
+    "ic": "🎛️",
+    "ac": "OC",
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfbom",
+    "l": "Bills of Material",
+    "f": [
+     "Item:ref:items",
+     "Revision",
+     "Status:sel:Draft|Awaiting Approval|Released|Superseded|Retired"
+    ],
+    "ic": "🧾",
+    "pre": "BOM",
+    "c": "mfBomV"
+   },
+   {
+    "k": "mfecr",
+    "l": "Engineering Changes & Revisions",
+    "f": [
+     "Item:ref:items",
+     "Change Type",
+     "Status:sel:Draft|Submitted|Approved|Implemented|Rejected"
+    ],
+    "ic": "🔧",
+    "pre": "ECO",
+    "c": "mfEcrV"
+   },
+   {
+    "k": "mfrt",
+    "l": "Routings",
+    "f": [
+     "Item:ref:items",
+     "Revision",
+     "Status:sel:Draft|Awaiting Approval|Released|Superseded|Retired"
+    ],
+    "ic": "🛤️",
+    "pre": "RTG",
+    "c": "mfRtV"
+   },
+   {
+    "k": "mfwc",
+    "l": "Work Centres",
+    "f": [
+     "Code",
+     "Name",
+     "Type:sel:Cutting and punching|Busbar fabrication|Assembly bench|Wiring bench|Testing bay|Paint and finish|Packing|Engineering|Subcontract",
+     "Department:ref:departments",
+     "Cost Centre:ref:costcenters",
+     "Hours per Day:num",
+     "Stations:num",
+     "Efficiency %:num",
+     "Labour Rate per Hour:num",
+     "Machine Rate per Hour:num",
+     "Overhead Pool:ref:mfpool",
+     "Overhead Rate per Hour:num",
+     "Overhead Basis:sel:Labour hours|Machine hours",
+     "Asset:ref:assets",
+     "Status:sel:Active|Inactive|Under maintenance|Blocked",
+     "Remarks"
+    ],
+    "ic": "🏗️",
+    "ac": "WC",
+    "show": [
+     "Code",
+     "Name",
+     "Type",
+     "Hours per Day",
+     "Stations",
+     "Labour Rate per Hour",
+     "Overhead Rate per Hour",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfpool",
+    "l": "Overhead Pools",
+    "f": [
+     "Code",
+     "Name",
+     "Cost Centre:ref:costcenters",
+     "Budget Fixed Overhead (year):num",
+     "Budget Variable Overhead (year):num",
+     "Normal Capacity Hours (year):num",
+     "Overhead Accounts (separate with ;)",
+     "Status:sel:Active|Inactive",
+     "Remarks"
+    ],
+    "ic": "🏭",
+    "ac": "OP",
+    "show": [
+     "Code",
+     "Name",
+     "Budget Fixed Overhead (year)",
+     "Budget Variable Overhead (year)",
+     "Normal Capacity Hours (year)",
+     "Status"
+    ]
+   },
+   {
+    "k": "mfdem",
+    "l": "Demand Planning",
+    "f": [],
+    "ic": "📈",
+    "c": "mfDemV"
+   },
+   {
+    "k": "mffc",
+    "l": "Demand Forecasts",
+    "f": [
+     "Item:ref:items",
+     "Forecast Date:date",
+     "Qty:num",
+     "Source:sel:Sales forecast|Tender pipeline|Management|Other",
+     "Confidence %:num",
+     "Status:sel:Active|Consumed|Cancelled",
+     "Remarks"
+    ],
+    "ic": "🔮",
+    "pre": "FC",
+    "hide": 1,
+    "show": [
+     "No",
+     "Item",
+     "Forecast Date",
+     "Qty",
+     "Source",
+     "Confidence %",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfpd",
+    "l": "Project Demand",
+    "f": [
+     "Project:ref:projects",
+     "Item:ref:items",
+     "Qty:num",
+     "Need Date:date",
+     "Status:sel:Open|Fulfilled|Cancelled",
+     "Reference",
+     "Remarks"
+    ],
+    "ic": "📁",
+    "pre": "PD",
+    "hide": 1,
+    "show": [
+     "No",
+     "Project",
+     "Item",
+     "Qty",
+     "Need Date",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfmrp",
+    "l": "Material Requirements Planning",
+    "f": [
+     "Run Date:date",
+     "Status:sel:Draft|Approved|Closed"
+    ],
+    "ic": "🧮",
+    "pre": "MRP",
+    "c": "mfMrpV"
+   },
+   {
+    "k": "mfsch",
+    "l": "Planning & Scheduling",
+    "f": [],
+    "ic": "🗓️",
+    "c": "mfSchV"
+   },
+   {
+    "k": "mfmo",
+    "l": "Production Orders",
+    "f": [
+     "Item:ref:items",
+     "Qty:num",
+     "Status:sel:Draft|Planned|Awaiting Approval|Released|In Progress|On Hold|Quality Hold|Completed|Closed|Cancelled"
+    ],
+    "ic": "🏭",
+    "pre": "WO",
+    "c": "mfMoV"
+   },
+   {
+    "k": "mfmat",
+    "l": "Material Reservations & Issues",
+    "f": [],
+    "ic": "📤",
+    "c": "mfMatV"
+   },
+   {
+    "k": "mfflr",
+    "l": "Shop-Floor Control",
+    "f": [],
+    "ic": "🛠️",
+    "c": "mfFloorV"
+   },
+   {
+    "k": "mfwip",
+    "l": "Work in Progress",
+    "f": [],
+    "ic": "🔄",
+    "c": "mfWipV"
+   },
+   {
+    "k": "mfqa",
+    "l": "Quality Assurance & Testing",
+    "f": [],
+    "ic": "✅",
+    "c": "mfQaV"
+   },
+   {
+    "k": "mfqt",
+    "l": "Test Templates",
+    "f": [
+     "Code",
+     "Name",
+     "Test Type:sel:Pass/Fail|Measurement|Visual",
+     "Characteristic",
+     "UOM",
+     "Target:num",
+     "Lower Limit:num",
+     "Upper Limit:num",
+     "Mandatory:sel:Yes|No",
+     "Instrument Required:sel:No|Yes",
+     "Method / Standard",
+     "Status:sel:Active|Inactive"
+    ],
+    "ic": "🧪",
+    "ac": "QT",
+    "hide": 1,
+    "show": [
+     "Code",
+     "Name",
+     "Test Type",
+     "Lower Limit",
+     "Upper Limit",
+     "Mandatory",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfqp",
+    "l": "Quality Plans",
+    "f": [
+     "Code",
+     "Name",
+     "Item:ref:items",
+     "Stage",
+     "Status:sel:Draft|Active|Inactive"
+    ],
+    "ic": "📋",
+    "pre": "QP",
+    "hide": 1
+   },
+   {
+    "k": "mfins",
+    "l": "Inspections",
+    "f": [
+     "Item:ref:items",
+     "MO",
+     "Result"
+    ],
+    "ic": "🔍",
+    "pre": "QI",
+    "hide": 1
+   },
+   {
+    "k": "mftrc",
+    "l": "Serial & Batch Traceability",
+    "f": [],
+    "ic": "🧬",
+    "c": "mfTrcV"
+   },
+   {
+    "k": "mfser",
+    "l": "Serial Register",
+    "f": [
+     "Serial",
+     "Item:ref:items",
+     "MO",
+     "Status"
+    ],
+    "ic": "🔢",
+    "hide": 1
+   },
+   {
+    "k": "mfncr",
+    "l": "Rework, Scrap & NCR",
+    "f": [],
+    "ic": "♻️",
+    "c": "mfNcrV"
+   },
+   {
+    "k": "mfnc",
+    "l": "Non-Conformance Reports",
+    "f": [
+     "Item:ref:items",
+     "MO",
+     "Status"
+    ],
+    "ic": "⚠️",
+    "pre": "NCR",
+    "hide": 1
+   },
+   {
+    "k": "mffg",
+    "l": "Finished Goods Receipt",
+    "f": [],
+    "ic": "📦",
+    "c": "mfFgV"
+   },
+   {
+    "k": "mfcst",
+    "l": "Manufacturing Costing",
+    "f": [],
+    "ic": "💰",
+    "c": "mfCstV"
+   },
+   {
+    "k": "mfstd",
+    "l": "Standard Cost Versions",
+    "f": [
+     "Item:ref:items",
+     "Version",
+     "Status:sel:Draft|Approved|Active|Superseded"
+    ],
+    "ic": "🏷️",
+    "pre": "STC",
+    "hide": 1
+   },
+   {
+    "k": "mfmnt",
+    "l": "Maintenance & Calibration",
+    "f": [],
+    "ic": "🔩",
+    "c": "mfMntV"
+   },
+   {
+    "k": "mfmw",
+    "l": "Maintenance Orders",
+    "f": [
+     "Work Centre",
+     "Type",
+     "Status"
+    ],
+    "ic": "🔧",
+    "pre": "MW",
+    "hide": 1
+   },
+   {
+    "k": "mfcal",
+    "l": "Calibration Instruments",
+    "f": [
+     "Code",
+     "Name",
+     "Instrument Type",
+     "Serial No",
+     "Asset:ref:assets",
+     "Range",
+     "Last Calibrated:date",
+     "Interval (days):num",
+     "Next Due:date",
+     "Certificate No",
+     "Calibrated By",
+     "Status:sel:Valid|Out of service"
+    ],
+    "ic": "📏",
+    "ac": "CI",
+    "hide": 1,
+    "show": [
+     "Code",
+     "Name",
+     "Instrument Type",
+     "Last Calibrated",
+     "Next Due",
+     "Certificate No",
+     "Status"
+    ],
+    "hook": "[fn]"
+   },
+   {
+    "k": "mfacc",
+    "l": "Manufacturing Accounting",
+    "f": [],
+    "ic": "📒",
+    "c": "mfAccV"
+   },
+   {
+    "k": "mfj",
+    "l": "Manufacturing Journals",
+    "f": [
+     "Type",
+     "MO",
+     "Amount:num",
+     "Status:sel:Draft|Posted|Cancelled"
+    ],
+    "ic": "📑",
+    "pre": "MFJ",
+    "hide": 1
+   },
+   {
+    "k": "mftime",
+    "l": "Time Entries",
+    "f": [
+     "MO",
+     "Employee",
+     "Mins:num",
+     "Status"
+    ],
+    "ic": "⏱️",
+    "pre": "TM",
+    "hide": 1
+   },
+   {
+    "k": "mfrep",
+    "l": "Manufacturing Reports",
+    "f": [],
+    "ic": "📚",
+    "c": "mfRepV"
+   },
+   {
+    "k": "mfset",
+    "l": "Settings & Approval Rules",
+    "f": [],
+    "ic": "⚙️",
+    "c": "mfSetV"
+   }
+  ]
+ },
+ {
+  "id": "fl",
+  "n": "Marine Fleet",
+  "d": "",
+  "s": [
+   {
+    "k": "fldash",
+    "l": "Fleet Dashboard",
+    "f": [],
+    "ic": "📊",
+    "c": "flDashV"
+   },
+   {
+    "k": "fixed_assets_vessel_extension",
+    "l": "Vessel Master",
+    "f": [
+     "Code",
+     "IMO",
+     "Flag",
+     "Call Sign",
+     "Vessel Type:sel:Deck Barge|Hopper|Tank|Tug|Crane Barge|Landing Craft|Other",
+     "DWT:num",
+     "Gross Tonnage:num",
+     "Net Tonnage:num",
+     "Year Built",
+     "Builder",
+     "Class Society",
+     "Status:sel:Active|Drydock|Laid Up|Sold",
+     "Last Drydock:date",
+     "Next Drydock:date",
+     "Drydock Interval (months):num",
+     "Daily Hire Rate:num",
+     "Standby Rate:num",
+     "Demurrage Rate (per hour):num",
+     "Freight Revenue Account:ref:coa",
+     "Hire Revenue Account:ref:coa",
+     "Demurrage Revenue Account:ref:coa",
+     "Fuel Account:ref:coa",
+     "Crew Account:ref:coa",
+     "Maintenance Account:ref:coa",
+     "Notes"
+    ],
+    "ic": "🚢",
+    "c": "flVslV",
+    "cnt": 1
+   },
+   {
+    "k": "fleet_voyages",
+    "l": "Voyage Master",
+    "f": [
+     "Vessel:ref:fixed_assets_vessel_extension",
+     "Project:ref:projects",
+     "Customer:ref:customers",
+     "SO No",
+     "Voyage Type:sel:Time Charter|Voyage Charter|CoA",
+     "Origin Port",
+     "Destination Port",
+     "Cargo Description",
+     "Cargo Quantity:num",
+     "Cargo UoM",
+     "Freight Rate:num",
+     "Hire Rate:num",
+     "Standby Rate:num",
+     "VAT %:num",
+     "Planned Departure:date",
+     "Actual Departure:date",
+     "Planned Arrival:date",
+     "Actual Arrival:date",
+     "Status:sel:Planned|In Progress|Completed|Invoiced|Closed",
+     "Notes"
+    ],
+    "ic": "🧭",
+    "c": "flVoyV",
+    "cnt": 1,
+    "pre": "VOY",
+    "yr": 1
+   },
+   {
+    "k": "fleet_voyage_costs",
+    "l": "Voyage Costs",
+    "f": [
+     "Voyage:ref:fleet_voyages",
+     "Cost Type:sel:Bunker|Port|Canal|Agency|Other",
+     "Supplier:ref:suppliers",
+     "AP Invoice No",
+     "Amount:num",
+     "GL Account:ref:coa",
+     "Description",
+     "Status:sel:Budget|Posted|Reversed"
+    ],
+    "ic": "⛽",
+    "c": "flCostV",
+    "cnt": 1
+   },
+   {
+    "k": "fleet_crew_assignments",
+    "l": "Crew Assignments",
+    "f": [
+     "Vessel:ref:fixed_assets_vessel_extension",
+     "Employee:ref:employees",
+     "Rank",
+     "Sign On:date",
+     "Sign Off:date",
+     "Daily Wage:num",
+     "Notes"
+    ],
+    "ic": "🧑‍✈️",
+    "c": "flCrewV",
+    "cnt": 1
+   },
+   {
+    "k": "flalloc",
+    "l": "Crew Cost Allocation",
+    "f": [],
+    "ic": "🧮",
+    "c": "flAllocV"
+   },
+   {
+    "k": "fleet_laytime",
+    "l": "Laytime Calculator",
+    "f": [
+     "Voyage:ref:fleet_voyages",
+     "Port",
+     "Laytime Start",
+     "Laytime End",
+     "Allowed Hours:num",
+     "Status:sel:Draft|Approved|Cancelled"
+    ],
+    "ic": "⏱️",
+    "c": "flLayV",
+    "cnt": 1,
+    "pre": "LAY",
+    "yr": 1
+   },
+   {
+    "k": "flinv",
+    "l": "Marine Invoicing",
+    "f": [],
+    "ic": "🧾",
+    "c": "flInvV"
+   },
+   {
+    "k": "flpl",
+    "l": "Vessel P&L",
+    "f": [],
+    "ic": "💹",
+    "c": "flPlV"
+   },
+   {
+    "k": "flvp",
+    "l": "Voyage P&L",
+    "f": [],
+    "ic": "📈",
+    "c": "flVpV"
+   },
+   {
+    "k": "flrep",
+    "l": "Fleet Reports",
+    "f": [],
+    "ic": "📚",
+    "c": "flRepV"
+   },
+   {
+    "k": "flset",
+    "l": "Settings & Roles",
+    "f": [],
+    "ic": "⚙️",
+    "c": "flSetV"
+   },
+   {
+    "k": "fleet_journals",
+    "l": "Fleet Journals",
+    "f": [
+     "Type",
+     "Vessel:ref:fixed_assets_vessel_extension",
+     "Period",
+     "Amount:num",
+     "Status:sel:Draft|Posted|Cancelled"
+    ],
+    "ic": "📑",
+    "pre": "FJ",
+    "hide": 1
+   }
+  ]
+ },
+ {
+  "id": "tm",
+  "n": "Time Management",
+  "d": "",
+  "s": [
+   {
+    "k": "tmdash",
+    "l": "Time Dashboard",
+    "f": [],
+    "ic": "📊",
+    "c": "tmDashV"
+   },
+   {
+    "k": "tm_shifts",
+    "l": "Shift Definitions",
+    "f": [
+     "Name",
+     "Start Time",
+     "End Time",
+     "Break Hrs:num",
+     "Standard Hrs (auto):num",
+     "Crosses Midnight (auto)",
+     "Late Grace (min):num",
+     "Early Grace (min):num",
+     "Status:sel:Active|Inactive",
+     "Notes"
+    ],
+    "ic": "🕐",
+    "hook": "[fn]",
+    "show": [
+     "Name",
+     "Start Time",
+     "End Time",
+     "Break Hrs",
+     "Standard Hrs (auto)",
+     "Late Grace (min)",
+     "Early Grace (min)",
+     "Status"
+    ]
+   },
+   {
+    "k": "tmingest",
+    "l": "Data Ingestion (API / Excel)",
+    "f": [],
+    "ic": "📥",
+    "c": "tmIngV"
+   },
+   {
+    "k": "attendance_raw",
+    "l": "Raw Attendance",
+    "f": [],
+    "ic": "🧾",
+    "c": "tmRawV"
+   },
+   {
+    "k": "time_exceptions",
+    "l": "Exception Dashboard (Cleansing)",
+    "f": [],
+    "ic": "🧹",
+    "c": "tmExcV"
+   },
+   {
+    "k": "timesheets",
+    "l": "Timesheet Generation & Approval",
+    "f": [
+     "Employee:ref:employees",
+     "Year:num",
+     "Month:num",
+     "Status"
+    ],
+    "ic": "🗒️",
+    "c": "tmTsV",
+    "pre": "TSH",
+    "yr": 1,
+    "cnt": 1,
+    "hide": 0
+   },
+   {
+    "k": "tmr1",
+    "l": "Late Comers",
+    "f": [],
+    "ic": "⏰",
+    "c": "tmR1V"
+   },
+   {
+    "k": "tmr2",
+    "l": "Early Leavers",
+    "f": [],
+    "ic": "🏃",
+    "c": "tmR2V"
+   },
+   {
+    "k": "tmr3",
+    "l": "Absenteeism",
+    "f": [],
+    "ic": "🚫",
+    "c": "tmR3V"
+   },
+   {
+    "k": "tmr4",
+    "l": "Overtime Summary",
+    "f": [],
+    "ic": "🕓",
+    "c": "tmR4V"
+   },
+   {
+    "k": "tmr5",
+    "l": "Employee Time Sheet",
+    "f": [],
+    "ic": "🖨️",
+    "c": "tmR5V"
+   },
+   {
+    "k": "tmset",
+    "l": "Settings & Roles",
+    "f": [],
+    "ic": "⚙️",
+    "c": "tmSetV"
+   }
+  ]
+ }
+]

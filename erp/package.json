@@ -1,0 +1,53 @@
+{
+  "name": "control-erp",
+  "productName": "Control ERP",
+  "version": "0.2.0",
+  "description": "Integrated ERP for engineering, contracting and trading companies (Desktop / Server / Cloud from one codebase)",
+  "main": "desktop/main.js",
+  "author": "Control Contracting & Trading Company (Private) L.L.C",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "server": "node --no-warnings server/run.js --port 8080 --data ./data",
+    "test": "node --no-warnings --test tests/*.test.js",
+    "desktop": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "ae.control.erp",
+    "productName": "Control ERP",
+    "copyright": "Control Contracting & Trading Company (Private) L.L.C",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**",
+      "server/**",
+      "web/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "desktop/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Control ERP",
+      "artifactName": "ControlERP-Setup-${version}.exe"
+    }
+  }
+}
