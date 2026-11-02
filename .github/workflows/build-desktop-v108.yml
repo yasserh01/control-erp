@@ -1,0 +1,50 @@
+name: Build Control ERP Desktop (v108)
+
+# Builds desktop-v108/ (the full v108 ERP as a Windows program).
+# The Setup.exe appears under the run's "Artifacts". A tag like desktop-v1.0.1 also publishes a GitHub Release.
+# (Tags starting with "v" stay for the erp/ platform workflow.)
+on:
+  push:
+    branches: [main, stage1-desktop-v108]
+    paths:
+      - 'desktop-v108/**'
+      - '.github/workflows/build-desktop-v108.yml'
+    tags: ['desktop-v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: desktop-v108
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install build tools
+        run: npm install --no-audit --no-fund
+
+      - name: Test (data store + the program end to end)
+        run: npm test
+
+      - name: Build Setup.exe
+        run: npm run dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Control-ERP-Desktop-Setup
+          path: desktop-v108/dist/*.exe
+          if-no-files-found: error
+
+      - name: Publish release (desktop-v* tags only)
+        if: startsWith(github.ref, 'refs/tags/desktop-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: desktop-v108/dist/*.exe
