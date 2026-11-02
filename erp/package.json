@@ -7,6 +7,10 @@
   "author": "Control Contracting & Trading Company (Private) L.L.C",
   "license": "UNLICENSED",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yasserh01/control-erp.git"
+  },
   "engines": {
     "node": ">=22.13"
   },
@@ -14,10 +18,10 @@
     "server": "node --no-warnings server/run.js --port 8080 --data ./data",
     "test": "node --no-warnings --test tests/*.test.js",
     "desktop": "electron .",
-    "dist:win": "electron-builder --win nsis"
+    "dist:win": "electron-builder --win nsis --publish never"
   },
   "optionalDependencies": {
-    "better-sqlite3": "^11.0.0"
+    "better-sqlite3": "^12.4.5"
   },
   "devDependencies": {
     "electron": "^37.0.0",
@@ -48,6 +52,7 @@
       "createStartMenuShortcut": true,
       "shortcutName": "Control ERP",
       "artifactName": "ControlERP-Setup-${version}.exe"
-    }
+    },
+    "publish": null
   }
 }
