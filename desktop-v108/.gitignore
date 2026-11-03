@@ -1,0 +1,11 @@
+node_modules/
+dist/
+# generated from erp/ERP_System.html by scripts/prepare-app.js
+app/index.html
+app/desktop-bridge.js
+app/build-info.json
+*.db
+*.db-wal
+*.db-shm
+.DS_Store
+Thumbs.db

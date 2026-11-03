@@ -1,0 +1,74 @@
+{
+  "name": "control-erp-desktop",
+  "productName": "Control ERP Desktop",
+  "version": "1.0.0",
+  "description": "Control ERP Desktop: the full v108 ERP screens as a Windows program, with company data in a local SQLite file.",
+  "main": "desktop/main.js",
+  "author": "Control Contracting & Trading Company (Private) L.L.C",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yasserh01/control-erp.git",
+    "directory": "desktop-v108"
+  },
+  "scripts": {
+    "prepare-app": "node scripts/prepare-app.js",
+    "start": "npm run prepare-app && electron .",
+    "test": "npm run prepare-app && node tests/store.test.js && node tests/smoke.test.js",
+    "test:store": "node tests/store.test.js",
+    "dist": "npm run prepare-app && electron-builder --win nsis --x64 --publish never",
+    "dist:dir": "npm run prepare-app && electron-builder --win dir --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.2.1",
+    "electron-builder": "^26.0.12",
+    "playwright-core": "^1.56.0"
+  },
+  "build": {
+    "appId": "ae.control.erp.desktop",
+    "productName": "Control ERP Desktop",
+    "copyright": "Copyright © 2026 Control Contracting & Trading Company (Private) L.L.C",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "desktop/**/*",
+      "app/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json",
+      "!**/*.map"
+    ],
+    "asar": true,
+    "electronLanguages": [
+      "en-US",
+      "ar"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "Control-ERP-Desktop-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Control ERP Desktop",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
